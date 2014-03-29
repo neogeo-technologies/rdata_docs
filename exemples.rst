@@ -124,114 +124,115 @@ Code source correspondant :
 .. code-block:: html
 
     <html>
-        <head>
-            <title>Utilisation des services GrandLyon Smart Data : Leaflet</title>
-            <meta charset="utf-8" />
-    
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    
-            <script src="leaflet.js"></script>
-            <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+      <head>
+        <title>Utilisation des services GrandLyon Smart Data : Leaflet</title>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                
+        <script src="leaflet.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        
+        <link rel="stylesheet" href="leaflet.css" />
+        <style>
+            body {
+                    padding: 0;
+                    margin: 0;
+            }
+            html, body, #map {
+                    height: 100%;
+            }
+        </style>
+      </head>
+      <body>
+        <div id="map"></div>
+        <script>
+            var map = L.map('map').setView([45.76, 4.85], 14);
+
+            L.tileLayer.wms("https://download.data.grandlyon.com/wms/grandlyon",{
+                    layers: '1840_5175_16_CC46',
+                    format: 'image/png',
+                    transparent: true,    
+                    opacity: 0.6       
+            }).addTo(map);
             
-            <link rel="stylesheet" href="leaflet.css" />
-            <style>
-                    body {
-                            padding: 0;
-                            margin: 0;
+            L.tileLayer.wms("http://openstreetmap.wms.data.grandlyon.com/default",{
+                    layers: 'default',
+                    format: 'image/png', 
+                    transparent: true,    
+                    opacity: 0.7       
+            }).addTo(map);
+            
+            var proxy = "proxy.php?url=";
+            var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata";
+            var params = '?SERVICE=WFS
+                &REQUEST=GetFeature
+                &VERSION=1.1.0
+                &TYPENAME=jcd_jcdecaux.jcdvelov
+                &outputformat=geojson';
+            
+            var VertIcon = L.icon({
+                iconUrl: 'images/cycling_Vert.png',
+                iconSize:     [33, 21]
+            });
+            var OrangeIcon = L.icon({
+                iconUrl: 'images/cycling_Orange.png',
+                iconSize:     [33, 21]
+            });
+            var BleuIcon = L.icon({
+                iconUrl: 'images/cycling_Bleu.png',
+                iconSize:     [33, 21]
+            });
+            var GrisIcon = L.icon({
+                iconUrl: 'images/cycling_Gris.png',
+                iconSize:     [33, 21]
+            });
+		
+            $.get(proxy + encodeURIComponent(smartdata_url + params), function(json){
+                var obj = $.parseJSON(json);
+                // Add markers
+                for(i=0;i<obj.features.length;i++) {
+                    //create feature from json
+                    var ftr = obj.features[i];
+                    // set marker options from properties
+                    var options = {
+                        gid: ftr.properties.gid,
+                        number: ftr.properties.number,
+                        name: ftr.properties.name,
+                        available_bikes: ftr.properties.available_bikes,
+                        available_bike_stands: ftr.properties.available_bike_stands
+                    };
+                    //set marker icon from availability
+                    switch(ftr.properties.availability){
+                        case 'Vert':
+                            options.icon = VertIcon;
+                            break;
+                        case 'Orange':
+                            options.icon = OrangeIcon;
+                            break;
+                        case 'Bleu' :
+                            options.icon = BleuIcon;
+                            break;
+                        default :
+                            options.icon = GrisIcon;
                     }
-                    html, body, #map {
-                            height: 100%;
-                    }
-            </style>
-        </head>
-        <body>
-            <div id="map"></div>
-    
-            <script>
-
-		var map = L.map('map').setView([45.76, 4.85], 14);
-
-		L.tileLayer.wms("https://download.data.grandlyon.com/wms/grandlyon",{
-			layers: '1840_5175_16_CC46',
-			format: 'image/png',
-			transparent: true,    
-			opacity: 0.6       
-                }).addTo(map);
-		
-		L.tileLayer.wms("http://openstreetmap.wms.data.grandlyon.com/default",{
-			layers: 'default',
-			format: 'image/png', 
-			transparent: true,    
-			opacity: 0.7       
-                }).addTo(map);
-		
-		var proxy = "proxy.php?url=";
-		var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata";
-		var params = '?SERVICE=WFS
-                    &REQUEST=GetFeature
-                    &VERSION=1.1.0
-                    &TYPENAME=jcd_jcdecaux.jcdvelov
-                    &outputformat=geojson';
-		
-		var VertIcon = L.icon({
-			iconUrl: 'images/cycling_Vert.png',
-			iconSize:     [33, 21]
-		});
-		var OrangeIcon = L.icon({
-			iconUrl: 'images/cycling_Orange.png',
-			iconSize:     [33, 21]
-		});
-		var BleuIcon = L.icon({
-			iconUrl: 'images/cycling_Bleu.png',
-			iconSize:     [33, 21]
-		});
-		var GrisIcon = L.icon({
-			iconUrl: 'images/cycling_Gris.png',
-			iconSize:     [33, 21]
-		});
-		
-		$.get(proxy + encodeURIComponent(smartdata_url + params), function(json){
-                    var obj = $.parseJSON(json);
-                    // Add markers
-                    for(i=0;i<obj.features.length;i++) {
-                        //create feature from json
-                        var ftr = obj.features[i];
-                        // set marker options from properties
-                        var options = {
-                                gid: ftr.properties.gid,
-                                number: ftr.properties.number,
-                                name: ftr.properties.name,
-                                available_bikes: ftr.properties.available_bikes,
-                                available_bike_stands: ftr.properties.available_bike_stands
-                        };
-                        //set marker icon from availability
-                        switch(ftr.properties.availability){
-                                case 'Vert':
-                                        options.icon = VertIcon;
-                                        break;
-                                case 'Orange':
-                                        options.icon = OrangeIcon;
-                                        break;
-                                case 'Bleu' :
-                                        options.icon = BleuIcon;
-                                        break;
-                                default :
-                                        options.icon = GrisIcon;
+                    //add marker to map
+                    var point = L.marker(
+                        [ftr.geometry.coordinates[1],ftr.geometry.coordinates[0]],
+                        options
+                    ).addTo(map);
+                    //define popup on click
+                    point.bindPopup(
+                        '<b>'+ point.options.name + '</b> (station '+point.options.number+')<br/>'
+                        + 'Il reste <b>' + point.options.available_bikes + '</b> v&eacute;los disponibles'
+                        + ' et <b>' + point.options.available_bike_stands + ' </b>bornes libres',
+                        {
+                        closeButton: false
                         }
-                        //add marker to map
-                        var point = L.marker([ftr.geometry.coordinates[1],ftr.geometry.coordinates[0]],options).addTo(map);
-                        //define popup on click
-                        point.bindPopup(
-                            '<b>'+ point.options.name + '</b> (station '+point.options.number+')<br/>'
-                            + 'Il reste <b>' + point.options.available_bikes + '</b> v&eacute;los disponibles'
-                            + ' et <b>' + point.options.available_bike_stands + ' </b>bornes libres',
-                            {
-                            closeButton: false
-                            }
-                        );
-                            
-                    }
-		});
+                    );
+                        
+                }
+            });
 
             </script>
         </body>
@@ -250,69 +251,75 @@ Code source correspondant :
 .. code-block:: html
    
     <html>
-        <head>
-            <title>Utilisation des services GrandLyon Smart Data : Google API</title>
-            <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-            <style type="text/css">
-              html { height: 100% }
-              body { height: 100%; margin: 0; padding: 0 }
-              #map-canvas { height: 100% }
-            </style>
-            <script type="text/javascript"
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASFkl33e0jJHEftd8aW4ZA9TxZc-t--vY&sensor=false">
-            </script>
+      <head>
+        <title>Utilisation des services GrandLyon Smart Data : Google API</title>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style type="text/css">
+          html { height: 100% }
+          body { height: 100%; margin: 0; padding: 0 }
+          #map-canvas { height: 100% }
+        </style>
+        <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=API_KEY&sensor=false">
+        </script>
+    
+        <script type="text/javascript">
+          function initialize() {
+            //Init map
+            var mapOptions = {
+              center: new google.maps.LatLng(45.76, 4.85),
+              zoom: 13
+            };
+            var map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+            
+            //Add WMS layer
+            var urlWMS = "https://download.data.grandlyon.com/wms/grandlyon?"
+                    + "&REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&CRS=EPSG:4171"
+                    + "&LAYERS=pvo_patrimoine_voirie.pvoamenagementcyclable"
+                    + "&FORMAT=image/png&TRANSPARENT=TRUE&WIDTH=256&HEIGHT=256";
+                    
+            var WMS_Layer = new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    var projection = map.getProjection();
+                    var zoomfactor = Math.pow(2, zoom);
+                    var LL_upperleft = projection.fromPointToLatLng(
+                        new google.maps.Point(
+                            coord.x * 256 / zoomfactor,
+                            coord.y * 256 / zoomfactor
+                        )
+                    );
+                    var LL_lowerRight = projection.fromPointToLatLng(
+                        new google.maps.Point(
+                            (coord.x + 1) * 256 / zoomfactor,
+                            (coord.y + 1) * 256 / zoomfactor
+                        )
+                    );
+                    var bbox =  "&bbox="
+                        + LL_lowerRight.lat() + "," + LL_upperleft.lng() + ","
+                        + LL_upperleft.lat() + "," + LL_lowerRight.lng();						   
+                    var url = urlWMS + bbox;
+                    return url;
+                },
+                tileSize: new google.maps.Size(256, 256),
+                isPng: true
+            });
+            
+            map.overlayMapTypes.push(WMS_Layer);
+            
+            //Add KML layer
+            var KML_Layer = new google.maps.KmlLayer({
+              url: 'https://download.data.grandlyon.com/kml/grandlyon/?'
+                +'request=layer&typename=pvo_patrimoine_voirie.pvostationvelov'
+            });
+            KML_Layer.setMap(map);
+      
+          }
+          google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
         
-            <script type="text/javascript">
-              function initialize() {
-                //Init map
-                var mapOptions = {
-                  center: new google.maps.LatLng(45.76, 4.85),
-                  zoom: 13
-                };
-                var map = new google.maps.Map(document.getElementById("map-canvas"),
-                    mapOptions);
-                
-                //Add WMS layer
-                var urlWMS = "https://download.data.grandlyon.com/wms/grandlyon?"
-                        + "&REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&CRS=EPSG:4171"
-                        + "&LAYERS=pvo_patrimoine_voirie.pvoamenagementcyclable"
-                        + "&FORMAT=image/png&TRANSPARENT=TRUE&WIDTH=256&HEIGHT=256";
-                        
-                var WMS_Layer = new google.maps.ImageMapType({
-                    getTileUrl: function (coord, zoom) {
-                        var projection = map.getProjection();
-                        var zoomfactor = Math.pow(2, zoom);
-                        var LL_upperleft = projection.fromPointToLatLng(
-                            new google.maps.Point(coord.x * 256 / zoomfactor, coord.y * 256 / zoomfactor)
-                        );
-                        var LL_lowerRight = projection.fromPointToLatLng(
-                            new google.maps.Point((coord.x + 1) * 256 / zoomfactor, (coord.y + 1) * 256 / zoomfactor)
-                        );
-                        var bbox =  "&bbox="
-                            + LL_lowerRight.lat() + "," + LL_upperleft.lng() + ","
-                            + LL_upperleft.lat() + "," + LL_lowerRight.lng();						   
-                        var url = urlWMS + bbox;
-                        return url;
-                    },
-                    tileSize: new google.maps.Size(256, 256),
-                    isPng: true
-                });
-                
-                map.overlayMapTypes.push(WMS_Layer);
-                
-                //Add KML layer
-                var KML_Layer = new google.maps.KmlLayer({
-                  url: 'https://download.data.grandlyon.com/kml/grandlyon/?'
-                    +'request=layer&typename=pvo_patrimoine_voirie.pvostationvelov'
-                });
-                KML_Layer.setMap(map);
-          
-              }
-              google.maps.event.addDomListener(window, 'load', initialize);
-            </script>
-        
-        </head>
-        <body>
-            <div id="map-canvas"/>
-        </body>
+      </head>
+      <body>
+        <div id="map-canvas"/>
+      </body>
     </html>
