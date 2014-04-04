@@ -1,3 +1,5 @@
+.. _exemples:
+
 Exemples et extraits de code
 ==============================
 
