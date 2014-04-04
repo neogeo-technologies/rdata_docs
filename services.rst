@@ -44,3 +44,31 @@ https://download.data.grandlyon.com/wfs/grandlyon?SERVICE=WFS&REQUEST=GetFeature
 Mais là encore, rassurez-vous, les librairies cartographiques disposent des classes nécessaires à une utilisation simple de ce type de service. 
 
 
+Services REST (en JSON)
+-----------------------
+Les services JSON de notre infrastructure permettent une navigation facile et rapide entre les différents jeux de données mis à disposition. Chaque service possède un point d'entrée dédié :
+
+https://download.data.grandlyon.com/ws/grandlyon/all.json
+
+et 
+
+https://download.data.grandlyon.com/ws/smartdata/all.json
+
+Ces documents listent l'ensemble des tables disponibles en consultation/téléchargement. Certaines peuvent avoir un accès restreint en fonction de vos droits. 
+
+De liens en lien, vous pouvez alors naviguer vers la description des tables (par ex. https://download.data.grandlyon.com/ws/grandlyon/fpc_fond_plan_communaut.fpcplandeau.json), les différentes valeurs présentes dans un champ particulier (par ex. les essences des arbres de la métropole : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json). Ce dernier mode dispose d'options particulières :
+
+* compact : si false, décrit la valeur pour chacun des enregistrements, sinon liste les différentes valeurs trouvées dans la table. True par défaut.
+
+* maxfeatures : indique le nombre maximal d'enregistrement à faire remonter par le service. 1000 par défaut. 
+
+* start : indique l'index de départ, afin de pouvoir paginer les résultats. 1 par défaut. 
+
+On peut ainsi demander au service les essences de 50 arbres à partir du 100e dans la base : 
+
+https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json?compact=false&maxfeatures=50&start=101
+
+Les services REST-JSON sont ainsi particulièrement adaptés à la constition de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données. 
+
+
+
