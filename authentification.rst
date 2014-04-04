@@ -21,8 +21,8 @@ La méthode d'authentification utilisée est le `Basic Auth HTTP <http://fr.wiki
 Mais ne vous y méprenez pas. L'encodage en base64 n'est pas un cryptage ! Le procédé est réversible et on peut donc retrouver les valeurs encodés très facilement. Couplé à un flux HTTPS, qui crypte les informations transmises par et vers le serveur, ils ne sont pas récupérables, mais écrits tels quels dans le code ils le sont. 
 
 
-Exemple avec cURL
--------------------
+Exemple avec cURL et WGET
+--------------------------
 
 L'utilisation du header authorization avec cURL est très simple. Imaginons un utilisateur doté des identifiants suivants :
 
@@ -36,4 +36,27 @@ L'instruction cURL à utiliser pour accéder à la donnée "demo.demovelov" sur 
     cURL -u demo@demo.fr:demo curl https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
 
 sauf erreur, vous devriez alors recevoir un flux json. 
+
+L'instruction WGET à utiliser est comparable : 
+
+:: 
+
+    wget --http-user=demo@demo.fr --http-password=demo https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
  
+
+Exemples avec PHP ou Python
+---------------------------
+
+Que ce soit en PHP ou en Python, les librairies utilisées pour émettre des requêtes HTTP intègrent toutes les possibilité de déclarer le Header Authorization.
+
+Pour Python et Urllib nous aurons :
+
+::
+    import urllib2, base64
+    username = demo@demo.fr
+    password = demo
+    request = urllib2.Request("https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json")
+    base64string = base64.encodestring('%s:%s' % (username, password)))
+    request.add_header("Authorization", "Basic %s" % base64string)   
+    result = urllib2.urlopen(request)
+    # to be continued
