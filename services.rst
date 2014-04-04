@@ -94,4 +94,4 @@ Le nom de couche à utiliser est tout simplement osm_grandlyon. La couche est di
 
 * EPSG:4171 (RGF93)
 
-
+Veuillez noter que ces deux derniers systèmes sont définis en degrés et non en mètres, et que leur utilisation pour faire une carte (et non lire les données) aboutit à un résultat visuel un peu écrasé qui est tout à fait normal (puisque vous projetez de fait des coordonnées géographiques sphériques sur un plan, le fichier ou l'écran. Cette projection est nommée `plate-carrée <http://fr.wikipedia.org/wiki/Projection_cylindrique_%C3%A9quidistante>`_).
