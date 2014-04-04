@@ -87,8 +87,11 @@ La plateforme SmartData propose un service de fond de carte tuilé construit à 
 http://openstreetmap.data.grandlyon.com
 
 Le nom de couche à utiliser est tout simplement osm_grandlyon. La couche est disponibles dans les projections suivantes :
+
 * ESPG:3857 et EPSG:900913 (Mercator Sphérique)
+
 * EPSG:4326 (WGS84)
+
 * EPSG:4171 (RGF93)
 
 
