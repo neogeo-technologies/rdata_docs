@@ -22,7 +22,11 @@ Il est accessible à partir de l'URL https://download.data.grandlyon.com/wms/[no
 
 Généralement on fait appel à son opération getCapabilities pour connaître son contenu (liste des couches) :
 
-https://download.data.grandlyon.com/wms/grandlyon?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0 renvoie ainsi un document XML listant (entre autres) les couches mises à disposition par le service. 
+https://download.data.grandlyon.com/wms/grandlyon?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0 renvoie ainsi un document XML listant (entre autres) les couches mises à disposition par le service, dont vous obtiendrez le contenu à l'aide d'une requête GetMap de ce type : 
+
+https://download.data.grandlyon.com/wms/grandlyon?LAYERS=adr_voie_lieu.adrcommune&FORMAT=image%2Fpng&EXCEPTIONS=application%2Fxml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&SRS=EPSG%3A4171&BBOX=4.7969555930669,45.74564647571,4.8423155242545,45.794786401164&WIDTH=720&HEIGHT=780
+
+Ca peut vous sembler un peu compliqué et fastidieux... Mais les librairies cartographiques sont là pour vous aider. Leaflet et OpenLayers implémentent des classes WMS qui feront tout ça pour vous, en adaptant les requêtes selon les manipulations faites sur la carte. Il vous suffit généralement de renseigner l'URL de base du service et d'indiquer le nom de la couche que vous souhaitez utiliser comme l'illustrent nos `Exemples et extraits de code`_
 
 Service WFS
 -----------
