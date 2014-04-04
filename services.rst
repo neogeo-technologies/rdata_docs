@@ -68,6 +68,14 @@ On peut ainsi demander au service les essences de 50 arbres à partir du 100e da
 
 https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json?compact=false&maxfeatures=50&start=101
 
+
+On peut également accéder à la totalité du contenu de la table (ou paginer ce contenu) en utilisant une URL du type :
+
+https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/all.json?compact=false
+
+pour consulter l'intégralité des enregistrements. 
+
+
 Les services REST-JSON sont ainsi particulièrement adaptés à la constition de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données. 
 
 
