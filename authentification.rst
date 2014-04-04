@@ -31,7 +31,8 @@ L'utilisation du header authorization avec cURL est très simple. Imaginons un u
 
 L'instruction cURL à utiliser pour accéder à la donnée "donnee_privee" sur le service smartdata serait alors :
 
-..
+::
+
     cURL -u demo@demo.fr:demo curl https://download.data.grandlyon.com/ws/smartdata/donnee_privee/all.json?compact=false
 
 sauf erreur, vous devriez alors recevoir un flux json. 
