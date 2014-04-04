@@ -71,7 +71,7 @@ https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/
 
 On peut également accéder à la totalité du contenu de la table (ou paginer ce contenu) en utilisant une URL du type :
 
-https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/all.json?compact=false
+https://secure.grandlyon.webmapping.fr/ws/smartdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
 
 pour consulter l'intégralité des enregistrements. 
 
