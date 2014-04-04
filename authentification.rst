@@ -49,15 +49,54 @@ Exemples avec PHP ou Python
 
 Que ce soit en PHP ou en Python, les librairies utilisées pour émettre des requêtes HTTP intègrent toutes les possibilité de déclarer le Header Authorization.
 
-Pour Python et Urllib nous aurons :
+Pour Python et urllib2 nous aurons :
 
 ::
 
     import urllib2, base64
+    
+    # set basic information
     username = demo@demo.fr
     password = demo
-    request = urllib2.Request("https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json")
+    url = "https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json"
+    
+    # prepare the request Object
+    request = urllib2.Request(url)
+    
+    # encode the username / password couple into a single base64 string
     base64string = base64.encodestring('%s:%s' % (username, password)))
-    request.add_header("Authorization", "Basic %s" % base64string)   
+    
+    # then add this string into the Authorization header
+    request.add_header("Authorization", "Basic %s" % base64string)
+    
+    # and open the url
     result = urllib2.urlopen(request)
-    # to be continued
+    
+    # then handle the result the way you like
+    
+::
+
+    // set basic information
+    $username='demo@demo.fr';
+    $password='demo';
+    $URL='https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json';
+    
+    // instantiate a new cUrl object
+    $ch = curl_init();
+    
+    // Everything is an option with PHPCurl !
+    curl_setopt($ch, CURLOPT_URL,$URL);
+    
+    // set RETURNTRANSFER to true to be able to handle the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+    
+    // set this option for enabling Basic Auth HTTP rules
+    curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    
+    // the previous setting will help here to encode the username/password into the correct format
+    curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
+    
+    // and lift off...
+    $result=curl_exec ($ch);
+    
+    // then handle the result the way you like
