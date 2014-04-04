@@ -73,7 +73,9 @@ Pour Python et urllib2 nous aurons :
     result = urllib2.urlopen(request)
     
     # then handle the result the way you like
-    
+
+En PHP, nous utiliserons la librairie cURL intégrée :
+
 ::
 
     // set basic information
