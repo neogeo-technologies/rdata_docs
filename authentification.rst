@@ -52,6 +52,7 @@ Que ce soit en PHP ou en Python, les librairies utilisées pour émettre des req
 Pour Python et Urllib nous aurons :
 
 ::
+
     import urllib2, base64
     username = demo@demo.fr
     password = demo
