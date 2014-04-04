@@ -79,4 +79,16 @@ pour consulter l'intégralité des enregistrements.
 Les services REST-JSON sont ainsi particulièrement adaptés à la constition de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données. 
 
 
+Service OSM (OpenStreetMap)
+---------------------------
+
+La plateforme SmartData propose un service de fond de carte tuilé construit à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Rhône-Alpes. Il est utilisable à partir de l'URL :
+
+http://openstreetmap.data.grandlyon.com
+
+Le nom de couche à utiliser est tout simplement osm_grandlyon. La couche est disponibles dans les projections suivantes :
+* ESPG:3857 et EPSG:900913 (Mercator Sphérique)
+* EPSG:4326 (WGS84)
+* EPSG:4171 (RGF93)
+
 
