@@ -56,9 +56,9 @@ Pour Python et urllib2 nous aurons :
     import urllib2, base64
     
     # set basic information
-    username = demo@demo.fr
-    password = demo
-    url = "https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json"
+    username = 'demo'
+    password = 'demo4dev'
+    url = 'https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json'
     
     # prepare the request Object
     request = urllib2.Request(url)
@@ -81,8 +81,8 @@ En PHP, nous utiliserons la librairie cURL intégrée :
     <?php
 
     // set basic information
-    $username='demo@demo.fr';
-    $password='demo';
+    $username='demo';
+    $password='demo4dev';
     $URL='https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json';
     
     // instantiate a new cUrl object
