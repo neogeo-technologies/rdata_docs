@@ -76,7 +76,7 @@ Pour Python et urllib2 nous aurons :
 
 En PHP, nous utiliserons la librairie cURL intégrée :
 
-::
+.. code-block:: PHP
 
     // set basic information
     $username='demo@demo.fr';
