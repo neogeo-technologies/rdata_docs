@@ -51,7 +51,7 @@ Que ce soit en PHP ou en Python, les librairies utilisées pour émettre des req
 
 Pour Python et urllib2 nous aurons :
 
-codeblock::python
+.. code-block:: python
 
     import urllib2, base64
     
