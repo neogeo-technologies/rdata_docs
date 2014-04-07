@@ -52,7 +52,6 @@ Que ce soit en PHP ou en Python, les librairies utilisées pour émettre des req
 Pour Python et urllib2 nous aurons :
 
 .. code-block:: python
-        :linenos:
 
     import urllib2, base64
     
@@ -78,7 +77,6 @@ Pour Python et urllib2 nous aurons :
 En PHP, nous utiliserons la librairie cURL intégrée :
 
 .. code-block:: php
-        :linenos:
 
     <?php
 
