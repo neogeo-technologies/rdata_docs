@@ -78,6 +78,8 @@ En PHP, nous utiliserons la librairie cURL intégrée :
 
 .. code-block:: PHP
 
+    <?php
+
     // set basic information
     $username='demo@demo.fr';
     $password='demo';
@@ -102,3 +104,5 @@ En PHP, nous utiliserons la librairie cURL intégrée :
     $result=curl_exec ($ch);
     
     // then handle the result the way you like
+    
+    ?>
