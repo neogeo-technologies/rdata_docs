@@ -1,7 +1,7 @@
 .. _authentification:
 
-Authentification et bonnes pratiques
-=============================================
+Authentification
+=================
 
 Principes
 -------------------
@@ -106,3 +106,4 @@ En PHP, nous utiliserons la librairie cURL intégrée :
     // then handle the result the way you like
     
     ?>
+
