@@ -24,7 +24,7 @@ Une des particularité du Javascript est d'être chargé et de s'exécuter côt�
 En PHP, Python, Java
 ---------------------
 
-Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les :ref:`exemples`_ proposés.
+Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les :ref:`exemples` proposés.
 
 Sur plateforme mobile
 ----------------------
@@ -173,7 +173,7 @@ Ce script PHP fait la même chose :
 
 .. code-block:: php
 
-	<?php
+    <?php
 		/*
 		License: LGPL as per: http://www.gnu.org/copyleft/lesser.html
 		$Id: proxy.php 3650 2007-11-28 00:26:06Z rdewit $
