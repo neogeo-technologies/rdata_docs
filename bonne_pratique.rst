@@ -171,7 +171,7 @@ Pour toute information complémentaire concernant OpenLayers et un Proxy, veuill
 
 Ce script PHP fait la même chose : 
 
-.. code-block:: PHP
+.. code-block:: php
 
 	<?php
 		/*
