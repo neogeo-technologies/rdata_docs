@@ -358,5 +358,16 @@ Ce script PHP fait la même chose :
 	?> 
 
 
+------------
+Synthèse
+------------
+
+Comme nous l'avons vu, il y a différentes stratégies à utiliser selon les flux que vous utilisez et la plateforme pour laquelle vous développez. Faire du WMS dans une application web sera plus simple que traiter du WFS volumineux dans une application iPhone. On peut cependant distinguer les approches les plus intéressantes :
+
+* Pour de l'image simple, sans authentification, utilisez un flux direct vers notre plateforme
+* pour les gros volumes texte (WFS, JSON...) récupérez la donnée à intervalles réguliers et servez là depuis votre serveur. Ca peut aussi vous éviter le recours à un script proxy.
+* Pour les applications nomades sur Smartphone, privilégiez l'autonomie de l'application par rapport aux modalités d'accès aux données. Récupérez les données, et implémentez un service listant les données disponibles, de sorte que vous pourrez intégrer de nouvelles couches de données à votre application sans la mettre à jour. 
+
+
 
 	 
