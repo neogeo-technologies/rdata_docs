@@ -1,4 +1,4 @@
-.. _bonnepratiques:
+.. _bonnespratiques:
 
 =================
 Bonnes Pratiques
@@ -19,12 +19,12 @@ Comme vous l'avez sans doute remarqué, certaines de nos données ne sont utilis
 En Javascript/Ajax
 -------------------
 
-Une des particularité du Javascript est d'être chargé et de s'exécuter côté client. Si vous intégrez vos identifiants dans votre code javascript, ils seront donc forcément accessibles à l'utilisateur de votre site. Employer ruses et contournements ne fera que rendre plus difficile leur récupération, mais à coup sûr ils apparaîtront tôt ou tard dans les requêtes que vous allez émettre vers nos services. Pour tout développement en Javascript/Ajax, il faut donc utiliser les technique de proxyfication des requêtes décrites plus bas. 
+Une des particularité du Javascript est d'être chargé et de s'exécuter côté client. Si vous intégrez vos identifiants dans votre code javascript, ils seront donc forcément accessibles à l'utilisateur de votre site. Employer ruses et contournements ne fera que rendre plus difficile leur récupération, mais à coup sûr ils apparaîtront tôt ou tard dans les requêtes que vous allez émettre vers nos services. Pour tout développement en Javascript/Ajax, il faut donc utiliser les technique de `Proxyfication`_ des requêtes décrites plus bas. 
 
 En PHP, Python, Java
 ---------------------
 
-Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les exemples proposés.
+Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les `exemples`_ proposés.
 
 Sur plateforme mobile
 ----------------------
