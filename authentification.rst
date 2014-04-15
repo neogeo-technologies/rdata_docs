@@ -26,14 +26,14 @@ Exemple avec cURL et WGET
 
 L'utilisation du header authorization avec cURL est très simple. Imaginons un utilisateur doté des identifiants suivants :
 
-* login : demo@demo.fr
-* password : demo
+* login : demo
+* password : demo4dev
 
 L'instruction cURL à utiliser pour accéder à la donnée "demo.demovelov" sur le service smartdata serait alors :
 
 ::
 
-    cURL -u demo@demo.fr:demo curl https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
+    cURL -u demo:demo4dev curl https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
 
 sauf erreur, vous devriez alors recevoir un flux json. 
 
@@ -41,7 +41,7 @@ L'instruction WGET à utiliser est comparable :
 
 :: 
 
-    wget --http-user=demo@demo.fr --http-password=demo https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
+    wget --http-user=demo --http-password=demo4dev https://download.data.grandlyon.com/ws/smartdata/demo.demovelov/all.json?compact=false
  
 
 Exemples avec PHP ou Python
