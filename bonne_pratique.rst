@@ -87,85 +87,85 @@ Pour toute information complémentaire concernant OpenLayers et un Proxy, veuill
 
 .. code-block:: python
 
-#!/usr/local/bin/python
+	#!/usr/local/bin/python
 
 
-"""This is a blind proxy that we use to get around browser
-restrictions that prevent the Javascript from loading pages not on the
-same server as the Javascript.  This has several problems: it's less
-efficient, it might break some sites, and it's a security risk because
-people can use this proxy to browse the web and possibly do bad stuff
-with it.  It only loads pages via http and https, but it can load any
-content type. It supports GET and POST requests."""
+	"""This is a blind proxy that we use to get around browser
+	restrictions that prevent the Javascript from loading pages not on the
+	same server as the Javascript.  This has several problems: it's less
+	efficient, it might break some sites, and it's a security risk because
+	people can use this proxy to browse the web and possibly do bad stuff
+	with it.  It only loads pages via http and https, but it can load any
+	content type. It supports GET and POST requests."""
 
-import urllib2
-import cgi
-import sys, os
+	import urllib2
+	import cgi
+	import sys, os
 
-# Designed to prevent Open Proxy type stuff.
-# replace 'my_target_server' by the external domain you are aiming to
-allowedHosts = ['localhost','my_target_server']
+	# Designed to prevent Open Proxy type stuff.
+	# replace 'my_target_server' by the external domain you are aiming to
+	allowedHosts = ['localhost','my_target_server']
 
-method = os.environ["REQUEST_METHOD"]
+	method = os.environ["REQUEST_METHOD"]
 
-if method == "POST":
-    qs = os.environ["QUERY_STRING"]
-    d = cgi.parse_qs(qs)
+	if method == "POST":
+	    qs = os.environ["QUERY_STRING"]
+	    d = cgi.parse_qs(qs)
 	
-	# checks if a url parameter exists in the POST request. If not, go to hell.
-    if d.has_key("url"):
-        url = d["url"][0]
-    else:
-        url = "http://www.openlayers.org"
-else:
-    fs = cgi.FieldStorage()
-	# checks if a url parameter exists in the GET request. If not, go to hell.
-    url = fs.getvalue('url', "http://www.openlayers.org")
+		# checks if a url parameter exists in the POST request. If not, go to hell.
+	    if d.has_key("url"):
+	        url = d["url"][0]
+	    else:
+	        url = "http://www.openlayers.org"
+	else:
+	    fs = cgi.FieldStorage()
+		# checks if a url parameter exists in the GET request. If not, go to hell.
+	    url = fs.getvalue('url', "http://www.openlayers.org")
 
-try:
-    host = url.split("/")[2]
+	try:
+	    host = url.split("/")[2]
 	
-	# reply with HTTP 502 code if the host is not allowed
-    if allowedHosts and not host in allowedHosts:
-        print "Status: 502 Bad Gateway"
-        print "Content-Type: text/plain"
-        print
-        print "This proxy does not allow you to access that location (%s)." % (host,)
-        print
-        print os.environ
-    # checks if the request is a http or https request  
-    elif url.startswith("http://") or url.startswith("https://"):
+		# reply with HTTP 502 code if the host is not allowed
+	    if allowedHosts and not host in allowedHosts:
+	        print "Status: 502 Bad Gateway"
+	        print "Content-Type: text/plain"
+	        print
+	        print "This proxy does not allow you to access that location (%s)." % (host,)
+	        print
+	        print os.environ
+	    # checks if the request is a http or https request  
+	    elif url.startswith("http://") or url.startswith("https://"):
     
-        if method == "POST":
-            length = int(os.environ["CONTENT_LENGTH"])
-            headers = {"Content-Type": os.environ["CONTENT_TYPE"]}
-            body = sys.stdin.read(length)
-            r = urllib2.Request(url, body, headers)
-            y = urllib2.urlopen(r)
-        else:
-            y = urllib2.urlopen(url)
+	        if method == "POST":
+	            length = int(os.environ["CONTENT_LENGTH"])
+	            headers = {"Content-Type": os.environ["CONTENT_TYPE"]}
+	            body = sys.stdin.read(length)
+	            r = urllib2.Request(url, body, headers)
+	            y = urllib2.urlopen(r)
+	        else:
+	            y = urllib2.urlopen(url)
         
-        # print content type header
-        i = y.info()
-        if i.has_key("Content-Type"):
-            print "Content-Type: %s" % (i["Content-Type"])
-        else:
-            print "Content-Type: text/plain"
-        print
+	        # print content type header
+	        i = y.info()
+	        if i.has_key("Content-Type"):
+	            print "Content-Type: %s" % (i["Content-Type"])
+	        else:
+	            print "Content-Type: text/plain"
+	        print
         
-        print y.read()
+	        print y.read()
         
-        y.close()
-    else:
-        print "Content-Type: text/plain"
-        print
-        print "Illegal request."
+	        y.close()
+	    else:
+	        print "Content-Type: text/plain"
+	        print
+	        print "Illegal request."
 
-except Exception, E:
-    print "Status: 500 Unexpected Error"
-    print "Content-Type: text/plain"
-    print 
-    print "Some unexpected error occurred. Error text was:", E
+	except Exception, E:
+	    print "Status: 500 Unexpected Error"
+	    print "Content-Type: text/plain"
+	    print 
+	    print "Some unexpected error occurred. Error text was:", E
 	
 	
 
@@ -173,190 +173,189 @@ Ce script PHP fait la même chose :
 
 .. code-block:: PHP
 
-<?php
-/*
-License: LGPL as per: http://www.gnu.org/copyleft/lesser.html
-$Id: proxy.php 3650 2007-11-28 00:26:06Z rdewit $
-$Name$
-*/
+	<?php
+	/*
+	License: LGPL as per: http://www.gnu.org/copyleft/lesser.html
+	$Id: proxy.php 3650 2007-11-28 00:26:06Z rdewit $
+	$Name$
+	*/
 
-////////////////////////////////////////////////////////////////////////////////
-// Description:
-// Script to redirect the request http://host/proxy.php?url=http://someUrl
-// to http://someUrl .
-//
-// This script can be used to circumvent javascript's security requirements
-// which prevent a URL from an external web site being called.
-//
-// Author: Nedjo Rogers
-////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////
+	// Description:
+	// Script to redirect the request http://host/proxy.php?url=http://someUrl
+	// to http://someUrl .
+	//
+	// This script can be used to circumvent javascript's security requirements
+	// which prevent a URL from an external web site being called.
+	//
+	// Author: Nedjo Rogers
+	////////////////////////////////////////////////////////////////////////////////
 
-// define alowed hosts
-$aAllowedDomains = array('localhost','my_target_server')
+	// define alowed hosts
+	$aAllowedDomains = array('localhost','my_target_server')
 
-// read in the variables
+	// read in the variables
 
-if(array_key_exists('HTTP_SERVERURL', $_SERVER)){
-  $onlineresource=$_SERVER['HTTP_SERVERURL'];
-}else{
-  $onlineresource=$_REQUEST['url'];
-}
-$parsed = parse_url($onlineresource);
-$host = @$parsed["host"];
-$path = @$parsed["path"] . "?" . @$parsed["query"];
-if(empty($host)) {
-  $host = "localhost";
-}
+	if(array_key_exists('HTTP_SERVERURL', $_SERVER)){
+		$onlineresource=$_SERVER['HTTP_SERVERURL'];
+	}else{
+		$onlineresource=$_REQUEST['url'];
+	}
+	$parsed = parse_url($onlineresource);
+	$host = @$parsed["host"];
+	$path = @$parsed["path"] . "?" . @$parsed["query"];
+	if(empty($host)) {
+		$host = "localhost";
+	}
 
-if(is_array($aAllowedDomains)) {
-   if(!in_array($host, $aAllowedDomains)) {
-       die("le domaine '$host' n'est pas autorisé. contactez l'administrateur.");
-   }
-}
+	if(is_array($aAllowedDomains)) {
+		if(!in_array($host, $aAllowedDomains)) {
+			die("le domaine '$host' n'est pas autorisé. contactez l'administrateur.");
+		}
+	}
 
-$port = @$parsed['port'];
-if(empty($port)){
-  $port="80";
-}
-$contenttype = @$_REQUEST['contenttype'];
-if(empty($contenttype)) {
-  //$contenttype = "text/xml";
-  $contenttype = "text/html; charset=ISO-8859-1";
-}
-$data = @$GLOBALS["HTTP_RAW_POST_DATA"];
-// define content type
-header("Content-type: " . $contenttype);
+	$port = @$parsed['port'];
+	if(empty($port)){
+		$port="80";
+	}
+	$contenttype = @$_REQUEST['contenttype'];
+	if(empty($contenttype)) {
+		$contenttype = "text/html; charset=ISO-8859-1";
+	}
+	$data = @$GLOBALS["HTTP_RAW_POST_DATA"];
+	// define content type
+	header("Content-type: " . $contenttype);
 
-if(empty($data)) {
-  $result = send_request();
-}
-else {
-  // post XML
-  $posting = new HTTP_Client($host, $port, $data);
-  $posting->set_path($path);
-  echo $result = $posting->send_request();
-}
+	if(empty($data)) {
+		$result = send_request();
+	}
+	else {
+		// post XML
+		$posting = new HTTP_Client($host, $port, $data);
+		$posting->set_path($path);
+		echo $result = $posting->send_request();
+	}
 
-// strip leading text from result and output result
-$len=strlen($result);
-$pos = strpos($result, "<");
-if($pos > 1) {
-  $result = substr($result, $pos, $len);
-}
-//$result = str_replace("xlink:","",$result);
-echo $result;
+	// strip leading text from result and output result
+	$len=strlen($result);
+	$pos = strpos($result, "<");
+	if($pos > 1) {
+		$result = substr($result, $pos, $len);
+	}
+	//$result = str_replace("xlink:","",$result);
+	echo $result;
 
-// define class with functions to open socket and post XML
-// from http://www.phpbuilder.com/annotate/message.php3?id=1013274 by Richard Hundt
+	// define class with functions to open socket and post XML
+	// from http://www.phpbuilder.com/annotate/message.php3?id=1013274 by Richard Hundt
 
-class HTTP_Client {
-  var $host;
-  var $path;
-  var $port;
-  var $data;
-  var $socket;
-  var $errno;
-  var $errstr;
-  var $timeout;
-  var $buf;
-  var $result;
-  var $agent_name = "MyAgent";
-  //Constructor, timeout 30s
-  function HTTP_Client($host, $port, $data, $timeout = 30) {
-    $this->host = $host;
-    $this->port = $port;
-    $this->data = $data;
-    $this->timeout = $timeout;
-  }
-  
-  //Opens a connection
-  function connect() {
-    $this->socket = fsockopen($this->host,
-      $this->port,
-      $this->errno,
-      $this->errstr,
-      $this->timeout
-      );
-    if(!$this->socket)
-      return false;
-    else
-      return true;
-  }
-  
-  //Set the path
-  function set_path($path) {
-    $this->path = $path;
-  }
-  
-  //Send request and clean up
-  function send_request() {
-    if(!$this->connect()) {
-      return false;
-    }
-    else {
-      $this->result = $this->request($this->data);
-      return $this->result;
-    }
-  }
-  
-  function request($data) {
-    $this->buf = "";
-    fwrite($this->socket,
-      "POST $this->path HTTP/1.0\r\n".
-      "Host:$this->host\r\n".
-      "Basic: ".base64_encode("guillaume:catch22")."\r\n".
-      "User-Agent: $this->agent_name\r\n".
-      "Content-Type: application/xml\r\n".
-      "Content-Length: ".strlen($data).
-      "\r\n".
-      "\r\n".$data.
-      "\r\n"
-    );
-  
-    while(!feof($this->socket))
-      $this->buf .= fgets($this->socket, 2048);
-      $this->close();
-      return $this->buf;
-  }
-  
-  
-  function close() {
-    fclose($this->socket);
-  }
-}
+	class HTTP_Client {
+		var $host;
+		var $path;
+		var $port;
+		var $data;
+		var $socket;
+		var $errno;
+		var $errstr;
+		var $timeout;
+		var $buf;
+		var $result;
+		var $agent_name = "MyAgent";
+		//Constructor, timeout 30s
+		function HTTP_Client($host, $port, $data, $timeout = 30) {
+			$this->host = $host;
+			$this->port = $port;
+			$this->data = $data;
+			$this->timeout = $timeout;
+		}
+
+		//Opens a connection
+		function connect() {
+			$this->socket = fsockopen($this->host,
+			$this->port,
+			$this->errno,
+			$this->errstr,
+			$this->timeout
+		);
+		if(!$this->socket)
+			return false;
+		else
+			return true;
+		}
+
+		//Set the path
+		function set_path($path) {
+			$this->path = $path;
+		}
+
+		//Send request and clean up
+		function send_request() {
+			if(!$this->connect()) {
+				return false;
+			}
+			else {
+				$this->result = $this->request($this->data);
+				return $this->result;
+			}
+		}
+
+		function request($data) {
+			$this->buf = "";
+			fwrite($this->socket,
+			"POST $this->path HTTP/1.0\r\n".
+			"Host:$this->host\r\n".
+			"Basic: ".base64_encode("guillaume:catch22")."\r\n".
+			"User-Agent: $this->agent_name\r\n".
+			"Content-Type: application/xml\r\n".
+			"Content-Length: ".strlen($data).
+			"\r\n".
+			"\r\n".$data.
+			"\r\n"
+		);
+
+		while(!feof($this->socket))
+			$this->buf .= fgets($this->socket, 2048);
+			$this->close();
+			return $this->buf;
+		}
 
 
+		function close() {
+			fclose($this->socket);
+		}
+	}
 
-function send_request() {
-  global $onlineresource;
-  $ch = curl_init();
-  $timeout = 5; // set to zero for no timeout
 
-  // fix to allow HTTPS connections with incorrect certificates
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-  curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
-  
-  //curl_setopt($ch, CURLOPT_USERPWD, 'guillaume:catch22');
-  //curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 
-  curl_setopt($ch, CURLOPT_URL,$onlineresource);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-  curl_setopt($ch, CURLOPT_ENCODING , "gzip, deflate");
+	function send_request() {
+		global $onlineresource;
+		$ch = curl_init();
+		$timeout = 5; // set to zero for no timeout
 
-  if( ! $file_contents = curl_exec($ch)){
-    trigger_error(curl_error($ch));
-  }
-  curl_close($ch);
-  $lines = array();
-  $lines = explode("\n", $file_contents);
-  if(!($response = $lines)) {
-    echo "Unable to retrieve file '$service_request'";
-  }
-  $response = implode("",$response);
-  return utf8_decode($response);
-}
-?> 
+		// fix to allow HTTPS connections with incorrect certificates
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
+
+		//curl_setopt($ch, CURLOPT_USERPWD, 'guillaume:catch22');
+		//curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+		curl_setopt($ch, CURLOPT_URL,$onlineresource);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		curl_setopt($ch, CURLOPT_ENCODING , "gzip, deflate");
+
+		if( ! $file_contents = curl_exec($ch)){
+			trigger_error(curl_error($ch));
+		}
+		curl_close($ch);
+		$lines = array();
+		$lines = explode("\n", $file_contents);
+		if(!($response = $lines)) {
+			echo "Unable to retrieve file '$service_request'";
+		}
+		$response = implode("",$response);
+		return utf8_decode($response);
+	}
+	?> 
 
 
 
