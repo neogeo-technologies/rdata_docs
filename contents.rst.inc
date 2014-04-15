@@ -8,4 +8,5 @@ Les différentes section de la documentation sont accessibles directement.
 
    services
    authentification
+   bonne_pratique
    exemples
