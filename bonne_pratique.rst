@@ -78,14 +78,14 @@ Le script que nous allons utiliser ici est fourni avec OpenLayers sous le nom de
 
 Il s'agit d'un script écrit en Python, parfaitement adapté au WFS. Pour l'utiliser, il faut le déposer dans un répertoire exécutable du serveur web (généralement le cgi-bin), en régler les droits pour le rendre exécutable (chmod a+x proxy.cgi par exemple) et indiquer à OpenLayers sa présence pour qu'il l'utilise (car OpenLayers est malin mais pas devin...) avec la directive :
 
-..code-block:: javascript
+.. code-block:: javascript
 
   OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
   
 Pour toute information complémentaire concernant OpenLayers et un Proxy, veuillez vous référer à la page de FAQ http://trac.osgeo.org/openlayers/wiki/FrequentlyAskedQuestions#ProxyHost
 
 
-..code-block:: python
+.. code-block:: python
 
 #!/usr/local/bin/python
 
@@ -171,7 +171,7 @@ except Exception, E:
 
 Ce script PHP fait la même chose : 
 
-..code-block:: PHP
+.. code-block:: PHP
 
 
 
