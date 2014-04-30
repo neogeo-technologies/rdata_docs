@@ -23,7 +23,7 @@ Code source correspondant :
           <script defer="defer" type="text/javascript">
             var map = new OpenLayers.Map('map');
             var osm = new OpenLayers.Layer.OSM('Simple OSM Map', null, {
-              //dynamic conversion in grey values
+              //conversion en valeurs de gris à la volée
               eventListeners: {
                 tileloaded: function(evt) {
                   var ctx = evt.tile.getCanvasContext();
@@ -40,8 +40,9 @@ Code source correspondant :
                 }
               }
             });
-        
-            var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata?";
+            //URL du service smartdata
+            var smartdata_url = "https://download.data.grandlyon.com/wfs/smartdata?";
+            //Définition du proxy pour gérer le cross-domain. Voir le paragraphe Bonne Pratiques -> Proxyfication pour plus d'information
             OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
             
             //Styles pour le rendu
@@ -149,15 +150,16 @@ Code source correspondant :
       <body>
         <div id="map"></div>
         <script>
+            //Initialisation de la map
             var map = L.map('map').setView([45.76, 4.85], 14);
-
+            //Layer WMS sur une orthophoto
             L.tileLayer.wms("https://download.data.grandlyon.com/wms/grandlyon",{
                     layers: '1840_5175_16_CC46',
                     format: 'image/png',
                     transparent: true,    
                     opacity: 0.6       
             }).addTo(map);
-            
+            //Layer WMS openstreetmap
             L.tileLayer.wms("http://openstreetmap.wms.data.grandlyon.com/default",{
                     layers: 'default',
                     format: 'image/png', 
@@ -165,6 +167,7 @@ Code source correspondant :
                     opacity: 0.7       
             }).addTo(map);
             
+            //Définition du proxy pour le WFS (cross domain). Voir le paragraphe Bonne Pratiques -> Proxyfication pour plus d'information
             var proxy = "proxy.php?url=";
             var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata";
             var params = '?SERVICE=WFS
@@ -218,12 +221,12 @@ Code source correspondant :
                         default :
                             options.icon = GrisIcon;
                     }
-                    //add marker to map
+                    //ajout du marker à la map
                     var point = L.marker(
                         [ftr.geometry.coordinates[1],ftr.geometry.coordinates[0]],
                         options
                     ).addTo(map);
-                    //define popup on click
+                    //définition de la popup sur le click
                     point.bindPopup(
                         '<b>'+ point.options.name + '</b> (station '+point.options.number+')<br/>'
                         + 'Il reste <b>' + point.options.available_bikes + '</b> v&eacute;los disponibles'
@@ -275,12 +278,12 @@ Code source correspondant :
             var map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
             
-            //Add WMS layer
+            //Ajout WMS sur l'aménagement cyclable
             var urlWMS = "https://download.data.grandlyon.com/wms/grandlyon?"
                     + "&REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&CRS=EPSG:4171"
                     + "&LAYERS=pvo_patrimoine_voirie.pvoamenagementcyclable"
                     + "&FORMAT=image/png&TRANSPARENT=TRUE&WIDTH=256&HEIGHT=256";
-                    
+            //L'API Google Map ne gère pas directement le WMS, il faut passer par un ImageMapType        
             var WMS_Layer = new google.maps.ImageMapType({
                 getTileUrl: function (coord, zoom) {
                     var projection = map.getProjection();
@@ -309,7 +312,7 @@ Code source correspondant :
             
             map.overlayMapTypes.push(WMS_Layer);
             
-            //Add KML layer
+            //Ajout KML layer
             var KML_Layer = new google.maps.KmlLayer({
               url: 'https://download.data.grandlyon.com/kml/grandlyon/?'
                 +'request=layer&typename=pvo_patrimoine_voirie.pvostationvelov'
