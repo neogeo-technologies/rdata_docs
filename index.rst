@@ -1,7 +1,7 @@
 Bienvenue sur GrandLyon Data
 ==================================
 
-.. image:: _static/home-smartdata.jpg
+.. image:: http://data.grandlyon.com//wp-content/themes/AUSY-SMARTDATA/images/logo-smart-data-grand-lyon.png
    :alt: GrandLyon Smart Data : plateforme d'ouverture des données publiques 
    :class: floatingflask
 
