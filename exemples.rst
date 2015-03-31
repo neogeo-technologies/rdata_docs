@@ -40,8 +40,8 @@ Code source correspondant :
                 }
               }
             });
-            //URL du service smartdata
-            var smartdata_url = "https://download.data.grandlyon.com/wfs/smartdata?";
+            //URL du service data
+            var data_url = "https://download.data.grandlyon.com/wfs/rdata?";
             //Définition du proxy pour gérer le cross-domain. Voir le paragraphe Bonne Pratiques -> Proxyfication pour plus d'information
             OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
             
@@ -59,12 +59,12 @@ Code source correspondant :
             var style = new OpenLayers.Style(template, {context: context});
             
             //Définition du layer WFS
-            var wfs = new OpenLayers.Layer.Vector("WFS Smartdata", {
+            var wfs = new OpenLayers.Layer.Vector("WFS GL Data", {
                 strategies: [new OpenLayers.Strategy.BBOX()],
                 protocol: new OpenLayers.Protocol.WFS({
                     version: "1.1.0",
                     srsName: "EPSG:4326",
-                    url: smartdata_url,
+                    url: data_url,
                     featurePrefix : 'ms',
                     featureType: "jcd_jcdecaux.jcdvelov",
                     geometryName: "msGeometry",
@@ -169,7 +169,7 @@ Code source correspondant :
             
             //Définition du proxy pour le WFS (cross domain). Voir le paragraphe Bonne Pratiques -> Proxyfication pour plus d'information
             var proxy = "proxy.php?url=";
-            var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata";
+            var data_url = "https://secure.grandlyon.webmapping.fr/wfs/rdata";
             var params = '?SERVICE=WFS
                 &REQUEST=GetFeature
                 &VERSION=1.1.0
@@ -193,7 +193,7 @@ Code source correspondant :
                 iconSize:     [33, 21]
             });
 		
-            $.get(proxy + encodeURIComponent(smartdata_url + params), function(json){
+            $.get(proxy + encodeURIComponent(data_url + params), function(json){
                 var obj = $.parseJSON(json);
                 // Add markers
                 for(i=0;i<obj.features.length;i++) {
@@ -257,7 +257,7 @@ Code source correspondant :
    
     <html>
       <head>
-        <title>Utilisation des services GrandLyon Smart Data : Google API</title>
+        <title>Utilisation des services GrandLyon Data : Google API</title>
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <style type="text/css">
           html { height: 100% }
