@@ -1,4 +1,4 @@
-smartdata
+rdata
 =========
 
-Documentation des services offerts par GrandLyon SmartData
+Documentation des services offerts par GrandLyon Data
