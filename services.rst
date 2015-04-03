@@ -1,7 +1,7 @@
-Les services offerts par GrandLyon Smart Data
+Les services offerts par GrandLyon Data
 =============================================
 
-La plateforme Smart Data vous permet d'accéder à différents services de consultation des données OpenData. Les services sont de deux types :
+La plateforme Data vous permet d'accéder à différents services de consultation des données OpenData. Les services sont de deux types :
 des services de visualisation qui vous permettent d'afficher des images (cartes) et des services de téléchargement qui vous permettent d'accéder directement à la donnée, selon des modalités et des formats variés.
 
 Lors de la mise en oeuvre d'une application cartographique, on ne peut pas traiter toutes les données de la même manière. Il y a en effet des données qui habillent (fond de carte par ex.), d'autres qui renseignent sur le contexte (points d'intérêt divers : mairie, gare...) et d'autres enfin qui portent l'information importante, celle que l'on souhaite vraiment mettre en avant et exploiter dans l'application (disponibilité des vélos, localisation des bus en temps réel...). 
@@ -31,7 +31,7 @@ renvoie ainsi un document XML listant (entre autres) les couches mises à dispos
 https://download.data.grandlyon.com/wms/grandlyon?LAYERS=adr_voie_lieu.adrcommune&FORMAT=image%2Fpng&EXCEPTIONS=application%2Fxml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&SRS=EPSG%3A4171&BBOX=4.7,45.6,5,45.9&WIDTH=720&HEIGHT=780
 
 .. image:: https://download.data.grandlyon.com/wms/grandlyon?LAYERS=adr_voie_lieu.adrcommune&FORMAT=image%2Fpng&EXCEPTIONS=application%2Fxml&TRANSPARENT=TRUE&VERSION=1.1.1&SERVICE=WMS&REQUEST=GetMap&STYLES=&SRS=EPSG%3A4171&BBOX=4.7,45.6,5,45.9&WIDTH=720&HEIGHT=780
-   :alt: GrandLyon Smart Data : le service WMS
+   :alt: GrandLyon Data : le service WMS
    :class: floatingflask
 
 Ca peut vous sembler un peu compliqué et fastidieux... Mais les librairies cartographiques sont là pour vous aider. Leaflet et OpenLayers implémentent des classes WMS qui feront tout ça pour vous, en adaptant les requêtes selon les manipulations faites sur la carte. Il vous suffit généralement de renseigner l'URL de base du service et d'indiquer le nom de la couche que vous souhaitez utiliser comme l'illustrent nos :ref:`exemples`.
@@ -68,7 +68,7 @@ https://download.data.grandlyon.com/ws/grandlyon/all.json
 
 et 
 
-https://download.data.grandlyon.com/ws/smartdata/all.json
+https://download.data.grandlyon.com/ws/rdata/all.json
 
 Ces documents listent l'ensemble des tables disponibles en consultation/téléchargement. Certaines peuvent avoir un accès restreint en fonction de vos droits. 
 
@@ -87,7 +87,7 @@ https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/
 
 On peut également accéder à la totalité du contenu de la table (ou paginer ce contenu) en utilisant une URL du type :
 
-https://secure.grandlyon.webmapping.fr/ws/smartdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
+https://secure.grandlyon.webmapping.fr/ws/rdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
 
 pour consulter l'intégralité des enregistrements. 
 
@@ -98,12 +98,12 @@ Les services REST-JSON sont ainsi particulièrement adaptés à la constition de
 Service OSM (OpenStreetMap)
 ---------------------------
 
-La plateforme SmartData propose un service de fond de carte tuilé construit à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Rhône-Alpes. Il est utilisable à partir de l'URL :
+La plateforme Data propose un service de fond de carte tuilé construit à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Rhône-Alpes. Il est utilisable à partir de l'URL :
 
 http://openstreetmap.data.grandlyon.com
 
 .. image:: http://openstreetmap.data.grandlyon.com/?LAYERS=osm_grandlyon&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&FORMAT=image%2Fjpeg&SRS=EPSG%3A4326&BBOX=4.8484037210919,45.764534434461,4.8548554273902,45.770986140759&WIDTH=256&HEIGHT=256
-   :alt: GrandLyon Smart Data : le service OSM
+   :alt: GrandLyon Data : le service OSM
    :class: floatingflask
 
 Le nom de couche à utiliser est tout simplement osm_grandlyon. La couche est disponibles dans les projections suivantes :
