@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Utilisation des services GrandLyon Smart Data : Leaflet</title>
+	<title>Utilisation des services GrandLyon Data : Leaflet</title>
 	<meta charset="utf-8" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,7 @@
                 }).addTo(map);
 				
 		var proxy = "proxy.php?url=";
-		var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata";
+		var rdata_url = "https://secure.grandlyon.webmapping.fr/wfs/rdata";
 		var params = '?SERVICE=WFS&REQUEST=GetFeature&version=1.1.0&TYPENAME=jcd_jcdecaux.jcdvelov&outputformat=geojson';
 		
 		var VertIcon = L.icon({
@@ -68,7 +68,7 @@
 			iconSize:     [33, 21]
 		});
 		
-		$.get(proxy + encodeURIComponent(smartdata_url + params), function(json){
+		$.get(proxy + encodeURIComponent(rdata_url + params), function(json){
 			var obj = $.parseJSON(json);
 			// Add markers
 			for(i=0;i<obj.features.length;i++) {
