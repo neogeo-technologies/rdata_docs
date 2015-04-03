@@ -15,7 +15,7 @@ Code source correspondant :
 
     <html>
       <head>
-        <title>Utilisation des services GrandLyon Smart Data : OpenLayers</title>
+        <title>Utilisation des services GrandLyon Data : OpenLayers</title>
         <script src="http://openlayers.org/api/OpenLayers.js"></script>
       </head>
         <body>
@@ -128,7 +128,7 @@ Code source correspondant :
 
     <html>
       <head>
-        <title>Utilisation des services GrandLyon Smart Data : Leaflet</title>
+        <title>Utilisation des services GrandLyon Data : Leaflet</title>
         <meta charset="utf-8" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
