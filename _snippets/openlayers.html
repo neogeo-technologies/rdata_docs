@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Utilisation des services GrandLyon Smart Data : OpenLayers</title>
+  <title>Utilisation des services GrandLyon Data : OpenLayers</title>
     <script src="http://openlayers.org/api/OpenLayers.js"></script>
     </head>
     <body>
@@ -26,7 +26,7 @@
         });
         
         //var proxy = "proxy.php?url=";
-        var smartdata_url = "https://secure.grandlyon.webmapping.fr/wfs/smartdata?";
+        var rdata_url = "https://secure.grandlyon.webmapping.fr/wfs/rdata?";
         //var params = '?SERVICE=WFS&REQUEST=GetFeature&version=1.1.0&TYPENAME=jcd_jcdecaux.jcdvelov&outputformat=geojson';
         OpenLayers.ProxyHost = "/cgi-bin/proxy.cgi?url=";
         
@@ -44,12 +44,12 @@
         var style = new OpenLayers.Style(template, {context: context});
         
         //Définition du layer WFS
-        var wfs = new OpenLayers.Layer.Vector("WFS Smartdata", {
+        var wfs = new OpenLayers.Layer.Vector("WFS rdata", {
             strategies: [new OpenLayers.Strategy.BBOX()],
             protocol: new OpenLayers.Protocol.WFS({
                 version: "1.1.0",
                 srsName: "EPSG:4326",
-                url: smartdata_url,
+                url: rdata_url,
                 featurePrefix : 'ms',
                 featureType: "jcd_jcdecaux.jcdvelov",
                 geometryName: "msGeometry",
