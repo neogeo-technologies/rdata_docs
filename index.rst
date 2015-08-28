@@ -8,7 +8,5 @@ Bienvenue sur Data Grand Lyon
 Bienvenue dans la documentation de Data Grand Lyon.  
 Cette documentation comporte plusieurs parties. La page services vous donnera des informations générales sur les services disponibles et leur utilisation.
 Par la suite, plusieurs exemples et extraits de code sont fournis dans la section exemples.
-... à compléter...
-
 
 .. include:: contents.rst.inc
