@@ -64,7 +64,7 @@ Service WCS
 Les services WCS (Web Coverage Service) permettent de récupérer directement les données brutes des couches raster (comme les orthophotos et les MNT). Le terme Coverage (couverture) correspond au jeu de données raster.
 Il s'agit donc d'un service de téléchargement dans lequel il est possible de filtrer le jeu de données à récupérer sur une partie seulement du territoire.
 
-Il est accessible à partir de l'URL 
+Il est accessible à partir de l'URL :
 
 https://download.data.grandlyon.com/wcs/[nom_du_service]
 
@@ -76,12 +76,13 @@ renvoie ainsi un document XML listant (entre autres) les couches mises à dispos
 
 https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&request=describeCoverage&version=1.1.0&identifiers=Ortho2009_vue_ensemble_16cm_CC46,1830_5155_16_CC46
 
-Les informations retournées ne concernent plus que les couches spécifiées dans le paramètre identifiers et sont un peu détaillées que dans le getCapabilities.
+Les informations retournées ne concernent plus que les couches spécifiées dans le paramètre identifiers (ici Ortho2009_vue_ensemble_16cm_CC46 et 1830_5155_16_CC46) et sont un peu plus détaillées que dans le getCapabilities.
+
 Enfin, pour obtenir la couverture souhaitée, on utilise une requête getCoverage de ce type : 
 
 https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&BBOX=1830000,5155000,1830100,5155100&request=getCoverage&version=1.1.0&format=image/tiff&crs=EPSG::3946&identifiers=1830_5155_16_CC46
 
-Encore une fois, même si cela peut paraître fastidieux, c'est un service standardisé et les librairies cartographiques disposent des classes nécessaires à une utilisation simple de ce type de service.
+Encore une fois, c'est un service standardisé et les librairies cartographiques disposent des classes nécessaires à une utilisation simple de ce type de service.
 
 Services REST (en JSON)
 -----------------------
