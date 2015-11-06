@@ -334,7 +334,7 @@ Utilisation du WCS
 -------------------
 Cet exemple montre l'utilisation du service WCS pour obtenir une ortophoto sur une zone de travail.
 
-**Phase 1** : lecture des capacités du service
+**Etape 1** : lecture des capacités du service
 
 https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=GetCapabilities&VERSION=1.0.0
 
@@ -388,7 +388,7 @@ https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=GetCapabil
 		</ContentMetadata>
 	</WCS_Capabilities>
 	
-**Phase 2** : détail d'une coverage 
+**Etape 2** : détail d'une coverage 
 
 https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=DescribeCoverage&VERSION=1.0.0&COVERAGE=1830_5155_16_CC46
 
@@ -442,7 +442,7 @@ https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=DescribeCo
 		</CoverageOffering>
 	</CoverageDescription>
 
-**Phase 3** : obtention de l'image sur une zone
+**Etape 3** : obtention de l'image sur une zone
 
 https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&FORMAT=GTiff&COVERAGE=1830_5155_16_CC46&BBOX=1832784,5156714.08000000007450581,1834141.43999999994412065,5158023.36000000033527613&CRS=EPSG:3946&RESPONSE_CRS=EPSG:3946&WIDTH=849&HEIGHT=819
 
@@ -462,7 +462,7 @@ Exemple de présentation du XML reçu (plugin CSW dans QGIS) :
 
 .. image:: _static/csw_getCapabilities.png
 
-**Etapes 2** : recherche sur des mots clés (Réseaux de transport)
+**Etape 2** : recherche sur des mots clés (Réseaux de transport)
 
 Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
 avec dans le data du POST : 
@@ -565,7 +565,7 @@ Exemple de présentation du résultat (plugin CSW dans QGIS) :
 .. image:: _static/csw_getRecords1.png
 
 
-**Etapes 3** : recherche sur des mots clés (Transport, Bus) et une zone géographique
+**Etape 3** : recherche sur des mots clés (Transport, Bus) et une zone géographique
 
 Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
 avec dans le data du POST : 
@@ -599,3 +599,60 @@ avec dans le data du POST :
 Exemple de présentation du résultat (plugin CSW dans QGIS) : 
 
 .. image:: _static/csw_getRecords2.png
+
+
+**Etape 4** : chargement d'une metadata précise par son ID parmi les résultats obtenus
+
+https://download.data.grandlyon.com/catalogue/srv/fre/csw?outputFormat=application%2Fxml&service=CSW&outputSchema=http%3A%2F%2Fwww.opengis.net%2Fcat%2Fcsw%2F2.0.2&request=GetRecordById&version=2.0.2&elementsetname=full&id=f5b0fe8e-f9cf-4f3c-8684-6b55d6935f6f
+
+XML obtenu en retour :
+
+.. code-block:: xml
+
+	<csw:GetRecordByIdResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2">
+		<csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
+			<dc:identifier>f5b0fe8e-f9cf-4f3c-8684-6b55d6935f6f</dc:identifier>
+			<dc:date>2015-11-06T00:06:17</dc:date>
+			<dc:title>Aménagement cyclable</dc:title>
+			<dc:type>dataset</dc:type>
+			<dc:subject>Réseaux de transport</dc:subject>
+			<dc:subject>transportation</dc:subject>
+			<dc:subject>planningCadastre</dc:subject>
+			<dc:format/>
+			<dct:abstract>
+			L'aménagement cyclable est un objet linéaire décrivant une infrastructure dédiée à la circulation des vélos (piste cyclable, bande cyclable, couloir bus ouverte aux vélos, double-sens cyclable, voie verte, mixité en zone de circulation apaisée). Il est caractérisé par des informations de gestion (nom, description, type d'aménagement, année de réalisation ...)
+			</dct:abstract>
+			<dc:description>
+			L'aménagement cyclable est un objet linéaire décrivant une infrastructure dédiée à la circulation des vélos (piste cyclable, bande cyclable, couloir bus ouverte aux vélos, double-sens cyclable, voie verte, mixité en zone de circulation apaisée). Il est caractérisé par des informations de gestion (nom, description, type d'aménagement, année de réalisation ...)
+			</dc:description>
+			<dc:rights>license</dc:rights>
+			<dc:language>fre</dc:language>
+			<dc:source>
+			Mise à jour en continu : remontée d'informations travaux des services du Grand Lyon et des partenaires et vérification de la donnée sur le terrain.
+			</dc:source>
+			<dc:format/>
+			<ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
+				<ows:LowerCorner>5.067 45.55</ows:LowerCorner>
+				<ows:UpperCorner>4.681 45.917</ows:UpperCorner>
+			</ows:BoundingBox>
+			<dc:URI protocol="OGC:WMS" name="pvo_patrimoine_voirie.pvoamenagementcyclable" description="Aménagement cyclable(OGC:WMS)">https://download.data.grandlyon.com/wms/grandlyon</dc:URI>
+			<dc:URI protocol="OGC:WFS" name="pvo_patrimoine_voirie.pvoamenagementcyclable" description="Aménagement cyclable(OGC:WFS)">https://download.data.grandlyon.com/wfs/grandlyon</dc:URI>
+			<dc:URI protocol="WWW:LINK-1.0-http--link" name="pvo_patrimoine_voirie.pvoamenagementcyclable/all.json" description="Description des données dans le format texte JSON">
+			https://download.data.grandlyon.com/ws/grandlyon/pvo_patrimoine_voirie.pvoamenagementcyclable/all.json
+			</dc:URI>
+			<dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">
+			https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf
+			</dc:URI>
+			<dc:URI protocol="image/png" name="thumbnail">
+			https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=f5b0fe8e-f9cf-4f3c-8684-6b55d6935f6f&fname=DV_AC_s.png
+			</dc:URI>
+			<dc:URI protocol="image/png" name="large_thumbnail">
+			https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=f5b0fe8e-f9cf-4f3c-8684-6b55d6935f6f&fname=DV_AC.png
+			</dc:URI>
+		</csw:Record>
+	</csw:GetRecordByIdResponse>
+	
+
+Exemple de présentation du résultat (plugin CSW dans QGIS) : 
+
+.. image:: _static/csw_getRecordByID.png
