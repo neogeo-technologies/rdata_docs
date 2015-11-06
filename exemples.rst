@@ -446,4 +446,4 @@ https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=DescribeCo
 
 https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&FORMAT=GTiff&COVERAGE=1830_5155_16_CC46&BBOX=1832784,5156714.08000000007450581,1834141.43999999994412065,5158023.36000000033527613&CRS=EPSG:3946&RESPONSE_CRS=EPSG:3946&WIDTH=849&HEIGHT=819
 
-.. image:: _static/wcs.png
+.. image:: _static/wcs_result.tif
