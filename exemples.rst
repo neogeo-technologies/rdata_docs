@@ -460,9 +460,9 @@ https://download.data.grandlyon.com/catalogue/srv/fre/csw?version=2.0.2&request=
 
 Exemple de présentation du XML reçu (plugin CSW dans QGIS) : 
 
-.. image:: _static/csw_getCapabilities
+.. image:: _static/csw_getCapabilities.png
 
-**Etapes 2** : recherche sur des mots clés
+**Etapes 2** : recherche sur des mots clés (Réseaux de transport)
 
 Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
 avec dans le data du POST : 
@@ -561,10 +561,11 @@ Extrait du XML obtenu en retour :
 	</csw:GetRecordsResponse> 
 
 Exemple de présentation du résultat (plugin CSW dans QGIS) : 
+
 .. image:: _static/csw_getRecords1.png
 
 
-**Etapes 3** : recherche sur des mots clés et une zone géographique
+**Etapes 3** : recherche sur des mots clés (Transport, Bus) et une zone géographique
 
 Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
 avec dans le data du POST : 
@@ -596,4 +597,5 @@ avec dans le data du POST :
 	</csw:GetRecords> 
 
 Exemple de présentation du résultat (plugin CSW dans QGIS) : 
+
 .. image:: _static/csw_getRecords2.png
