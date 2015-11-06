@@ -454,15 +454,15 @@ Utilisation du service CSW
 
 Cet exemple montre l'utilisation du service CSW pour obtenir des informations sur les métadonnées.
 
-**Phase 1** : lecture des capacités du service
+**Etape 1** : lecture des capacités du service
 
 https://download.data.grandlyon.com/catalogue/srv/fre/csw?version=2.0.2&request=GetCapabilities&service=CSW
 
-Exemple de présentation du XML reçu (plugin CSW de QGIS) : 
+Exemple de présentation du XML reçu (plugin CSW dans QGIS) : 
 
 .. image:: _static/csw_getCapabilities
 
-**Phase 2** : recherche sur des mots clés
+**Etapes 2** : recherche sur des mots clés
 
 Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
 avec dans le data du POST : 
@@ -485,323 +485,115 @@ avec dans le data du POST :
 	</csw:GetRecords> 
 	
 	
-Extrait du XML obtenu en retour : 
+Extrait du XML obtenu en retour :
 
 .. code-block:: xml
-<?xml version="1.0" encoding="UTF-8"?>
-<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
-  <csw:SearchStatus timestamp="2015-11-06T16:36:24" />
-  <csw:SearchResults numberOfRecordsMatched="47" numberOfRecordsReturned="10" elementSet="full" nextRecord="11">
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <dc:title xmlns:dct="http://purl.org/dc/terms/">Alertes accessibilitÃ© du rÃ©seau TCL</dc:title>
-      <dc:creator xmlns:dct="http://purl.org/dc/terms/">256900994</dc:creator>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">RÃ©seaux de transport</dc:subject>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:description xmlns:dct="http://purl.org/dc/terms/">Les alertes accessibilitÃ© recensent les ascenseurs et escaliers mÃ©caniques actuellement indisponibles dans les stations de mÃ©tro et de tramway Ã©quipÃ©es du rÃ©seau TCL.</dc:description>
-      <dc:publisher xmlns:dct="http://purl.org/dc/terms/">SYTRAL</dc:publisher>
-      <dc:type xmlns:dct="http://purl.org/dc/terms/">nonGeographicDataset</dc:type>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/json</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">text/csv</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">csv (taille : 2 Ko)</dc:format>
-      <dc:source xmlns:dct="http://purl.org/dc/terms/">DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:language xmlns:dct="http://purl.org/dc/terms/">fre</dc:language>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclalerteaccessibilite/all.json</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tclalerteaccessibilite/alerte_accessibilite.csv</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/grandlyon/LicenceEngagee.pdf</dc:relation>
-      <dc:coverage xmlns:dct="http://purl.org/dc/terms/">North 45.917, South 45.55, East 5.067, West 4.681. GRAND LYON</dc:coverage>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Licence EngagÃ©e</dc:rights>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Pas de restriction d'accÃ¨s public selon INSPIRE</dc:rights>
-      <dct:created xmlns:dct="http://purl.org/dc/terms/">2014-12-04</dct:created>
-      <dct:dateSubmitted xmlns:dct="http://purl.org/dc/terms/">2015-02-02</dct:dateSubmitted>
-      <dct:isPartOf xmlns:dct="http://purl.org/dc/terms/">16a9a657-e938-484e-a067-5cdacd7a0419</dct:isPartOf>
-      <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">Free access with registration</dct:accessRights>
-      <dct:accrualPeriodicity xmlns:dct="http://purl.org/dc/terms/">continuous</dct:accrualPeriodicity>
-      <dct:modified xmlns:dct="http://purl.org/dc/terms/">2015-11-06T00:02:26</dct:modified>
-      <dc:identifier xmlns:dct="http://purl.org/dc/terms/">4721ec9e-86c8-4687-8713-f406290949ad</dc:identifier>
-      <ows:BoundingBox crs="urn:x-ogc:def:crs:EPSG:6.11:4326">
-        <ows:LowerCorner>45.55 4.681</ows:LowerCorner>
-        <ows:UpperCorner>45.917 5.067</ows:UpperCorner>
-      </ows:BoundingBox>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>58f93af3-a651-4cbd-bd9d-b4562f8d404d</dc:identifier>
-      <dc:date>2015-11-06T00:04:55</dc:date>
-      <dc:title>Lignes de mÃ©tro et funiculaire du rÃ©seau TCL</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>La reprÃ©sentation graphique des lignes de mÃ©tro et de funiculaire du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dct:abstract>
-      <dc:description>La reprÃ©sentation graphique des lignes de mÃ©tro et de funiculaire du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="DB:POSTGIS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL">jdbc:postgresql://postgis_tr:5432/grandlyon:$gl69@rdata</dc:URI>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tcllignemf/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignemf/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=58f93af3-a651-4cbd-bd9d-b4562f8d404d&amp;fname=funimetrotrac_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=58f93af3-a651-4cbd-bd9d-b4562f8d404d&amp;fname=funimetrotrac.png</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <dc:title xmlns:dct="http://purl.org/dc/terms/">Horaires thÃ©oriques du rÃ©seau TCL</dc:title>
-      <dc:creator xmlns:dct="http://purl.org/dc/terms/">256900994</dc:creator>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">RÃ©seaux de transport</dc:subject>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:description xmlns:dct="http://purl.org/dc/terms/">Les donnÃ©es horaires correspondent Ã  lâensemble de lâoffre du rÃ©seau TCL : les horaires de lâensemble des lignes  commerciales (pour une pÃ©riode de 60 jours) et les informations gÃ©ographiques associÃ©es (topographie du rÃ©seau).</dc:description>
-      <dc:publisher xmlns:dct="http://purl.org/dc/terms/">SYTRAL</dc:publisher>
-      <dc:type xmlns:dct="http://purl.org/dc/terms/">nonGeographicDataset</dc:type>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/zip</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/zip</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">zip (taille : 14 Mo)</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/zip</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/pdf</dc:format>
-      <dc:source xmlns:dct="http://purl.org/dc/terms/">DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:language xmlns:dct="http://purl.org/dc/terms/">fre</dc:language>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tcltheorique/GTFS_TCL.ZIP</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tcltheorique/NEPTUNE_TCL.ZIP</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tcltheorique/NETEX_TCL.ZIP</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tcltheorique/OFFREDETRANSPORT_TCL.PDF</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/grandlyon/LicenceEngagee.pdf</dc:relation>
-      <dc:coverage xmlns:dct="http://purl.org/dc/terms/">North 45.917, South 45.55, East 5.067, West 4.681. GRAND LYON</dc:coverage>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Licence EngagÃ©e</dc:rights>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Pas de restriction d'accÃ¨s public selon INSPIRE</dc:rights>
-      <dct:created xmlns:dct="http://purl.org/dc/terms/">2014-12-04</dct:created>
-      <dct:dateSubmitted xmlns:dct="http://purl.org/dc/terms/">2015-01-15</dct:dateSubmitted>
-      <dct:isPartOf xmlns:dct="http://purl.org/dc/terms/">16a9a657-e938-484e-a067-5cdacd7a0419</dct:isPartOf>
-      <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">Free access with registration</dct:accessRights>
-      <dct:accrualPeriodicity xmlns:dct="http://purl.org/dc/terms/">daily</dct:accrualPeriodicity>
-      <dct:modified xmlns:dct="http://purl.org/dc/terms/">2015-11-06T00:04:15</dct:modified>
-      <dc:identifier xmlns:dct="http://purl.org/dc/terms/">f5f8d11e-8345-4bdd-8710-9f3d6cad2f2b</dc:identifier>
-      <ows:BoundingBox crs="urn:x-ogc:def:crs:EPSG:6.11:4326">
-        <ows:LowerCorner>45.55 4.681</ows:LowerCorner>
-        <ows:UpperCorner>45.917 5.067</ows:UpperCorner>
-      </ows:BoundingBox>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>1087c43e-907e-4540-9225-200236851fb3</dc:identifier>
-      <dc:date>2015-11-06T00:01:45</dc:date>
-      <dc:title>Lignes de tramway du rÃ©seau TCL</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>La reprÃ©sentation graphique des lignes de tramway du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dct:abstract>
-      <dc:description>La reprÃ©sentation graphique des lignes de tramway du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tcllignetram" description="Lignes de tramway du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tcllignetram" description="Lignes de tramway du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tcllignetram/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignetram/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=1087c43e-907e-4540-9225-200236851fb3&amp;fname=tramways_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=1087c43e-907e-4540-9225-200236851fb3&amp;fname=tramways.png</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>bb6bde0b-c03f-420d-bb4c-bdab28648f1e</dc:identifier>
-      <dc:date>2015-11-06T00:05:28</dc:date>
-      <dc:title>Lignes de bus du rÃ©seau TCL</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>La reprÃ©sentation graphique des lignes de bus et trolleybus du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dct:abstract>
-      <dc:description>La reprÃ©sentation graphique des lignes de bus et trolleybus du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
-La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tcllignebus" description="Lignes de bus du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tcllignebus" description="Lignes de bus du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tcllignebus/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignebus/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=bb6bde0b-c03f-420d-bb4c-bdab28648f1e&amp;fname=lignesbustrolleybus_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=bb6bde0b-c03f-420d-bb4c-bdab28648f1e&amp;fname=lignesbustrolleybus.png</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>16a9a657-e938-484e-a067-5cdacd7a0419</dc:identifier>
-      <dc:date>2015-11-06T00:01:35</dc:date>
-      <dc:title>RÃ©seau de transport en commun du Grand Lyon (TCL Sytral)</dc:title>
-      <dc:type>series</dc:type>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>Les donnÃ©es du rÃ©seau de transport en commun TCL prÃ©sentent des informations relatives aux lignes, aux arrÃªts, aux horaires et aux services sur le territoire du Grand Lyon.</dct:abstract>
-      <dc:description>Les donnÃ©es du rÃ©seau de transport en commun TCL prÃ©sentent des informations relatives aux lignes, aux arrÃªts, aux horaires et aux services sur le territoire du Grand Lyon.</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.067 45.55</ows:LowerCorner>
-        <ows:UpperCorner>4.681 45.917</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=16a9a657-e938-484e-a067-5cdacd7a0419&amp;fname=TCL_LIGNES_s.png</dc:URI>
-      <dc:URI name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=16a9a657-e938-484e-a067-5cdacd7a0419&amp;fname=TCL_LIGNES.PNG</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <dc:title xmlns:dct="http://purl.org/dc/terms/">Prochains passages temps rÃ©el du rÃ©seau TCL</dc:title>
-      <dc:creator xmlns:dct="http://purl.org/dc/terms/">256900994</dc:creator>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">RÃ©seaux de transport</dc:subject>
-      <dc:subject xmlns:dct="http://purl.org/dc/terms/">Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:description xmlns:dct="http://purl.org/dc/terms/">Les prochains passages sont les horaires estimÃ©s des deux prochaines dessertes de chaque ligne commerciale pour l'ensemble des arrÃªts du rÃ©seau TCL. Ces horaires sont issus des calculs en temps rÃ©el des SystÃ¨mes d'Aide Ã  l'Exploitation (Edylic). Ces horaires sont associÃ©s aux identifiants de l'offre thÃ©orique (identifiant point d'arrÃªt, ligne commerciale et course).</dc:description>
-      <dc:publisher xmlns:dct="http://purl.org/dc/terms/">SYTRAL</dc:publisher>
-      <dc:type xmlns:dct="http://purl.org/dc/terms/">nonGeographicDataset</dc:type>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/json</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">text/csv</dc:format>
-      <dc:format xmlns:dct="http://purl.org/dc/terms/">csv (taille : 700 Ko)</dc:format>
-      <dc:source xmlns:dct="http://purl.org/dc/terms/">DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:language xmlns:dct="http://purl.org/dc/terms/">fre</dc:language>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclpassagearret/all.json</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tclpassagearret/tclpassagearret.csv</dc:relation>
-      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/grandlyon/LicenceAssociee.pdf</dc:relation>
-      <dc:coverage xmlns:dct="http://purl.org/dc/terms/">North 45.917, South 45.55, East 4.681, West 5.067. GRAND LYON</dc:coverage>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Licence AssociÃ©e</dc:rights>
-      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Pas de restriction d'accÃ¨s public selon INSPIRE</dc:rights>
-      <dct:created xmlns:dct="http://purl.org/dc/terms/">2014-12-04</dct:created>
-      <dct:dateSubmitted xmlns:dct="http://purl.org/dc/terms/">2015-01-15</dct:dateSubmitted>
-      <dct:isPartOf xmlns:dct="http://purl.org/dc/terms/">16a9a657-e938-484e-a067-5cdacd7a0419</dct:isPartOf>
-      <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">Available by subscription</dct:accessRights>
-      <dct:accrualPeriodicity xmlns:dct="http://purl.org/dc/terms/">continuous</dct:accrualPeriodicity>
-      <dct:modified xmlns:dct="http://purl.org/dc/terms/">2015-11-06T00:00:23</dct:modified>
-      <dc:identifier xmlns:dct="http://purl.org/dc/terms/">380eaf99-b24f-4006-bcb5-3620233afebe</dc:identifier>
-      <ows:BoundingBox crs="urn:x-ogc:def:crs:EPSG:6.11:4326">
-        <ows:LowerCorner>45.55 5.067</ows:LowerCorner>
-        <ows:UpperCorner>45.917 4.681</ows:UpperCorner>
-      </ows:BoundingBox>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>9dbe1946-502b-4524-9261-9ebc4a5b0657</dc:identifier>
-      <dc:date>2015-11-06T00:00:36</dc:date>
-      <dc:title>Points service du rÃ©seau TCL</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>Les points service du rÃ©seau TCL  sont des objets ponctuels qui localisent les diffÃ©rents points services permettant dâacheter des tickets  et de recharger les abonnements du rÃ©seau TCL.
-Le point service est caractÃ©risÃ© par des informations de gestion (type de commerce, adresse, coordonnÃ©es  x/y).</dct:abstract>
-      <dc:description>Les points service du rÃ©seau TCL  sont des objets ponctuels qui localisent les diffÃ©rents points services permettant dâacheter des tickets  et de recharger les abonnements du rÃ©seau TCL.
-Le point service est caractÃ©risÃ© par des informations de gestion (type de commerce, adresse, coordonnÃ©es  x/y).</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tcldepositaire" description="Points service du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tcldepositaire" description="Points service du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tcldepositaire/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcldepositaire/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=9dbe1946-502b-4524-9261-9ebc4a5b0657&amp;fname=depositaire_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=9dbe1946-502b-4524-9261-9ebc4a5b0657&amp;fname=depositaire.png</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>b69db867-ef72-421e-a8b5-665ea855ebb4</dc:identifier>
-      <dc:date>2015-11-06T00:02:24</dc:date>
-      <dc:title>Bornes e-tecely du rÃ©seau TCL</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>Les bornes e-tecely du rÃ©seau TCL  sont des objets ponctuels qui localisent les diffÃ©rentes bornes e-tecely permettant de recharger les abonnements du rÃ©seau TCL.
-La borne e-tecely est caractÃ©risÃ©e par des informations de gestion (nom, adresse, coordonnÃ©es  x/y).</dct:abstract>
-      <dc:description>Les bornes e-tecely du rÃ©seau TCL  sont des objets ponctuels qui localisent les diffÃ©rentes bornes e-tecely permettant de recharger les abonnements du rÃ©seau TCL.
-La borne e-tecely est caractÃ©risÃ©e par des informations de gestion (nom, adresse, coordonnÃ©es  x/y).</dc:description>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tclpointrechargement" description="Bornes e-tecely du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tclpointrechargement" description="Bornes e-tecely du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tclpointrechargement/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclpointrechargement/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=b69db867-ef72-421e-a8b5-665ea855ebb4&amp;fname=Borneetecely_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=b69db867-ef72-421e-a8b5-665ea855ebb4&amp;fname=Borneetecely.png</dc:URI>
-    </csw:Record>
-    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
-      <dc:identifier>9509b412-617d-4672-b02a-2ff68df6ad96</dc:identifier>
-      <dc:date>2015-11-06T00:03:31</dc:date>
-      <dc:title>Parcs Relais du rÃ©seau TCL (DisponibilitÃ©s temps rÃ©el)</dc:title>
-      <dc:type>dataset</dc:type>
-      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
-      <dc:subject>RÃ©seaux de transport</dc:subject>
-      <dc:subject>transportation</dc:subject>
-      <dc:format />
-      <dct:abstract>Les parcs relais du rÃ©seau TCL sont des objets ponctuels qui localisent les diffÃ©rents parcs relais. Le parc relais est caractÃ©risÃ© par des informations de gestion  :
-- identifiant, 
-- nom, 
-- capacitÃ©, 
-- nombre de place PMR, 
-- horaires, 
-- surveillÃ© ou non, 
-- coordonnÃ©es x/y 
-- informations temps rÃ©el indiquant la disponibilitÃ© du parking, rafraÃ®chies toutes les minutes.</dct:abstract>
-      <dc:description>Les parcs relais du rÃ©seau TCL sont des objets ponctuels qui localisent les diffÃ©rents parcs relais. Le parc relais est caractÃ©risÃ© par des informations de gestion  :
-- identifiant, 
-- nom, 
-- capacitÃ©, 
-- nombre de place PMR, 
-- horaires, 
-- surveillÃ© ou non, 
-- coordonnÃ©es x/y 
-- informations temps rÃ©el indiquant la disponibilitÃ© du parking, rafraÃ®chies toutes les minutes.</dc:description>
-      <dc:rights>restricted</dc:rights>
-      <dc:rights>license</dc:rights>
-      <dc:language>fre</dc:language>
-      <dc:source>Ces donnÃ©es proviennent de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
-      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
-      <dc:format />
-      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
-        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
-        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
-      </ows:BoundingBox>
-      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tclparcrelaistr" description="Parcs Relais du rÃ©seau TCL (DisponibilitÃ©s temps rÃ©el) (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
-      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tclparcrelaistr" description="Parcs Relais du rÃ©seau TCL (DisponibilitÃ©s temps rÃ©el) (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tclparcrelaistr/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclparcrelaistr/all.json</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tclparcrelaistr.csv" description="Fichier csv des disponibilitÃ©s temps rÃ©el des Parcs Relais du rÃ©seau TCL">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tclparcrelaistr/tclparcrelaistr.csv</dc:URI>
-      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence associÃ©e" description="Description des conditions d'utilisation de la Licence AssociÃ©e">https://download.data.grandlyon.com/files/grandlyon/LicenceAssociee.pdf</dc:URI>
-      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=9509b412-617d-4672-b02a-2ff68df6ad96&amp;fname=parcrelais_s.png</dc:URI>
-      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=9509b412-617d-4672-b02a-2ff68df6ad96&amp;fname=parcrelais.png</dc:URI>
-    </csw:Record>
-  </csw:SearchResults>
-</csw:GetRecordsResponse> 
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<csw:GetRecordsResponse xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+	  <csw:SearchStatus timestamp="2015-11-06T16:36:24" />
+	  <csw:SearchResults numberOfRecordsMatched="47" numberOfRecordsReturned="10" elementSet="full" nextRecord="11">
+	    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	      <dc:title xmlns:dct="http://purl.org/dc/terms/">Alertes accessibilitÃ© du rÃ©seau TCL</dc:title>
+	      <dc:creator xmlns:dct="http://purl.org/dc/terms/">256900994</dc:creator>
+	      <dc:subject xmlns:dct="http://purl.org/dc/terms/">RÃ©seaux de transport</dc:subject>
+	      <dc:subject xmlns:dct="http://purl.org/dc/terms/">Services d'utilitÃ© publique et services publics</dc:subject>
+	      <dc:description xmlns:dct="http://purl.org/dc/terms/">Les alertes accessibilitÃ© recensent les ascenseurs et escaliers mÃ©caniques actuellement indisponibles dans les stations de mÃ©tro et de tramway Ã©quipÃ©es du rÃ©seau TCL.</dc:description>
+	      <dc:publisher xmlns:dct="http://purl.org/dc/terms/">SYTRAL</dc:publisher>
+	      <dc:type xmlns:dct="http://purl.org/dc/terms/">nonGeographicDataset</dc:type>
+	      <dc:format xmlns:dct="http://purl.org/dc/terms/">application/json</dc:format>
+	      <dc:format xmlns:dct="http://purl.org/dc/terms/">text/csv</dc:format>
+	      <dc:format xmlns:dct="http://purl.org/dc/terms/">csv (taille : 2 Ko)</dc:format>
+	      <dc:source xmlns:dct="http://purl.org/dc/terms/">DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
+	      <dc:language xmlns:dct="http://purl.org/dc/terms/">fre</dc:language>
+	      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tclalerteaccessibilite/all.json</dc:relation>
+	      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/rdata/tcl_sytral.tclalerteaccessibilite/alerte_accessibilite.csv</dc:relation>
+	      <dc:relation xmlns:dct="http://purl.org/dc/terms/">https://download.data.grandlyon.com/files/grandlyon/LicenceEngagee.pdf</dc:relation>
+	      <dc:coverage xmlns:dct="http://purl.org/dc/terms/">North 45.917, South 45.55, East 5.067, West 4.681. GRAND LYON</dc:coverage>
+	      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Licence EngagÃ©e</dc:rights>
+	      <dc:rights xmlns:dct="http://purl.org/dc/terms/">Pas de restriction d'accÃ¨s public selon INSPIRE</dc:rights>
+	      <dct:created xmlns:dct="http://purl.org/dc/terms/">2014-12-04</dct:created>
+	      <dct:dateSubmitted xmlns:dct="http://purl.org/dc/terms/">2015-02-02</dct:dateSubmitted>
+	      <dct:isPartOf xmlns:dct="http://purl.org/dc/terms/">16a9a657-e938-484e-a067-5cdacd7a0419</dct:isPartOf>
+	      <dct:accessRights xmlns:dct="http://purl.org/dc/terms/">Free access with registration</dct:accessRights>
+	      <dct:accrualPeriodicity xmlns:dct="http://purl.org/dc/terms/">continuous</dct:accrualPeriodicity>
+	      <dct:modified xmlns:dct="http://purl.org/dc/terms/">2015-11-06T00:02:26</dct:modified>
+	      <dc:identifier xmlns:dct="http://purl.org/dc/terms/">4721ec9e-86c8-4687-8713-f406290949ad</dc:identifier>
+	      <ows:BoundingBox crs="urn:x-ogc:def:crs:EPSG:6.11:4326">
+	        <ows:LowerCorner>45.55 4.681</ows:LowerCorner>
+	        <ows:UpperCorner>45.917 5.067</ows:UpperCorner>
+	      </ows:BoundingBox>
+	    </csw:Record>
+	    <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dct="http://purl.org/dc/terms/">
+	      <dc:identifier>58f93af3-a651-4cbd-bd9d-b4562f8d404d</dc:identifier>
+	      <dc:date>2015-11-06T00:04:55</dc:date>
+	      <dc:title>Lignes de mÃ©tro et funiculaire du rÃ©seau TCL</dc:title>
+	      <dc:type>dataset</dc:type>
+	      <dc:subject>RÃ©seaux de transport</dc:subject>
+	      <dc:subject>Services d'utilitÃ© publique et services publics</dc:subject>
+	      <dc:subject>transportation</dc:subject>
+	      <dc:format />
+	      <dct:abstract>La reprÃ©sentation graphique des lignes de mÃ©tro et de funiculaire du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
+	La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dct:abstract>
+	      <dc:description>La reprÃ©sentation graphique des lignes de mÃ©tro et de funiculaire du rÃ©seau TCL est un objet linÃ©aire qui localise la ligne et son parcours de terminus Ã  terminus.
+	La reprÃ©sentation graphique des lignes est caractÃ©risÃ©e par des informations de gestion (identifiant, numÃ©ro de ligne et sens, libellÃ©, unitÃ© de transport, couleur du tracÃ©, famille de transport) et de tracÃ©s (polylignes de terminus Ã  terminus).</dc:description>
+	      <dc:rights>license</dc:rights>
+	      <dc:language>fre</dc:language>
+	      <dc:source>DonnÃ©es provenant de la base gÃ©ographique et topologique TCL SYTRAL.</dc:source>
+	      <dc:relation>16a9a657-e938-484e-a067-5cdacd7a0419</dc:relation>
+	      <dc:format />
+	      <ows:BoundingBox crs="urn:ogc:def:crs:EPSG::RGF93 / CC46 (EPSG:3946)">
+	        <ows:LowerCorner>5.1410943067093 45.486705557736</ows:LowerCorner>
+	        <ows:UpperCorner>4.629545313738 45.945335689366</ows:UpperCorner>
+	      </ows:BoundingBox>
+	      <dc:URI protocol="DB:POSTGIS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL">jdbc:postgresql://postgis_tr:5432/grandlyon:$gl69@rdata</dc:URI>
+	      <dc:URI protocol="OGC:WMS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL (OGC:WMS)">https://download.data.grandlyon.com/wms/rdata</dc:URI>
+	      <dc:URI protocol="OGC:WFS" name="tcl_sytral.tcllignemf" description="Lignes de mÃ©tro et funiculaire du rÃ©seau TCL (OGC:WFS)">https://download.data.grandlyon.com/wfs/rdata</dc:URI>
+	      <dc:URI protocol="WWW:LINK-1.0-http--link" name="tcl_sytral.tcllignemf/all.json" description="Description des donnÃ©es dans le format texte JSON">https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignemf/all.json</dc:URI>
+	      <dc:URI protocol="WWW:LINK-1.0-http--link" name="Licence Ouverte" description="Description des conditions d'utilisation de la Licence Ouverte">https://download.data.grandlyon.com/files/grandlyon/LicenceOuverte.pdf</dc:URI>
+	      <dc:URI protocol="image/png" name="thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=58f93af3-a651-4cbd-bd9d-b4562f8d404d&amp;fname=funimetrotrac_s.png</dc:URI>
+	      <dc:URI protocol="image/png" name="large_thumbnail">https://download.data.grandlyon.com/catalogue/srv/fre/resources.get?uuid=58f93af3-a651-4cbd-bd9d-b4562f8d404d&amp;fname=funimetrotrac.png</dc:URI>
+	    </csw:Record>
+	   <csw:Record xmlns:ows="http://www.opengis.net/ows" xmlns:geonet="http://www.fao.org/geonetwork" xmlns:dc="http://purl.org/dc/elements/1.1/">
+	   ...
+	    </csw:Record>
+	  </csw:SearchResults>
+	</csw:GetRecordsResponse> 
+
+Exemple de présentation du résultat (plugin CSW dans QGIS) : 
+.. image:: _static/csw_getRecords1.png
+
+
+**Etapes 3** : recherche sur des mots clés et une zone géographique
+
+Requête POST : https://download.data.grandlyon.com/catalogue/srv/fre/csw
+avec dans le data du POST : 
+
+.. code-block:: xml
+
+	<?xml version="1.0" ?>
+	<csw:GetRecords maxRecords="10" outputFormat="application/xml" outputSchema="http://www.opengis.net/cat/csw/2.0.2" resultType="results" service="CSW" version="2.0.2" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:gml311="http://www.opengis.net/gml" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2 http://schemas.opengis.net/csw/2.0.2/CSW-discovery.xsd">
+		<csw:Query typeNames="csw:Record">
+			<csw:ElementSetName>full</csw:ElementSetName>
+			<csw:Constraint version="1.1.0">
+				<ogc:Filter>
+					<ogc:And>
+						<ogc:BBOX>
+							<ogc:PropertyName>ows:BoundingBox</ogc:PropertyName>
+							<gml311:Envelope>
+								<gml311:lowerCorner>4.7027853 45.597999</gml311:lowerCorner>
+								<gml311:upperCorner>4.7191596 45.609031</gml311:upperCorner>
+							</gml311:Envelope>
+						</ogc:BBOX>
+						<ogc:PropertyIsLike escapeChar="\" singleChar="_" wildCard="%">
+							<ogc:PropertyName>csw:AnyText</ogc:PropertyName>
+							<ogc:Literal>Transport, Bus</ogc:Literal>
+						</ogc:PropertyIsLike>
+					</ogc:And>
+				</ogc:Filter>
+			</csw:Constraint>
+		</csw:Query>
+	</csw:GetRecords> 
+
+Exemple de présentation du résultat (plugin CSW dans QGIS) : 
+.. image:: _static/csw_getRecords2.png
