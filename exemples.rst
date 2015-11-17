@@ -332,121 +332,35 @@ Code source correspondant :
     
 Utilisation du WCS
 -------------------
-Cet exemple montre l'utilisation du service WCS pour obtenir une ortophoto sur une zone de travail.
+Cet exemple montre l'utilisation du service WCS pour obtenir les données brutes sur le NO2 en 2012.
+Nous utiliserons dans ces exemples la version 2.0.1 qui est la plus récente. Il est encore possible d'utiliser aussi les versions 1.1.1 ou 1.0.0.
 
 **Etape 1** : lecture des capacités du service
 
-https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=GetCapabilities&VERSION=1.0.0
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&REQUEST=GetCapabilities&VERSION=2.0.1
 
-.. code-block:: xml
+.. image:: _static/wcs_GetCapabilities.png
 
-	<WCS_Capabilities xmlns="http://www.opengis.net/wcs" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" updateSequence="0" xsi:schemaLocation="http://www.opengis.net/wcs http://schemas.opengis.net/wcs/1.0.0/wcsCapabilities.xsd">
-		<Service>
-			<description>
-			Base de la plateforme d'intégration de données géographiques du Grand Lyon. Données sous Licence Ouverte (Etalab).
-			</description>
-			<name>MapServer WCS</name>
-			<label>Serveur WCS du GrandLyon</label>
-			<responsibleParty>
-				<individualName>Diffusion de données et géoservices</individualName>
-				<organisationName>
-				Grand Lyon - Direction des systèmes d'informations et de télécommunications
-				</organisationName>
-				<positionName>owner</positionName>
-				<contactInfo>
-				<address>
-					<deliveryPoint>20, rue du Lac - BP 31 03</deliveryPoint>
-					<city>Lyon cedex 03</city>
-					<administrativeArea>Rhône-Alpes</administrativeArea>
-					<postalCode>69399</postalCode>
-					<country>France</country>
-					<electronicMailAddress>smartdata@grandlyon.org</electronicMailAddress>
-				</address>
-				<onlineResource xlink:type="simple" xlink:href="https://download.data.grandlyon.com/wcs/grandlyon"/>
-				</contactInfo>
-			</responsibleParty>
-			<fees>no conditions apply</fees>
-			<accessConstraints>None</accessConstraints>
-		</Service>
-		<Capability>...</Capability>
-		<ContentMetadata>
-			<CoverageOfferingBrief>
-				<name>Ortho2009_vue_ensemble_16cm_CC46</name>
-				<lonLatEnvelope srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
-					<gml:pos>4.66488945660669 45.5384488998787</gml:pos>
-					<gml:pos>5.17955354166403 45.9426997122181</gml:pos>
-				</lonLatEnvelope>
-			</CoverageOfferingBrief>
-			<CoverageOfferingBrief>
-				<name>1830_5155_16_CC46</name>
-				<lonLatEnvelope srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
-					<gml:pos>4.66596079716618 45.5819080900619</gml:pos>
-					<gml:pos>4.73140908341002 45.6278468986858</gml:pos>
-				</lonLatEnvelope>
-			</CoverageOfferingBrief>
-			<CoverageOfferingBrief>...</CoverageOfferingBrief>
-		</ContentMetadata>
-	</WCS_Capabilities>
+Dans la dernière partie du XML renvoyé, on peut voir la liste des couvertures disponibles pour ce service, dont la couverture **Carte_agglo_lyon_NO2_2012**, que nous utiliserons dans la suite de l'exemple.
 	
-**Etape 2** : détail d'une coverage 
+**Etape 2** : détail d'une couverture 
 
-https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&REQUEST=DescribeCoverage&VERSION=1.0.0&COVERAGE=1830_5155_16_CC46
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&REQUEST=DescribeCoverage&VERSION=2.0.1&COVERAGEID=Carte_agglo_Lyon_NO2_2012
 
-.. code-block:: xml
+Attention, en version 2.0.1, le paramètre pour indiquer la couverture demandée est **COVERAGEID**, mais en version 1.0 c'est **IDENTIFIER** et en version 1.1, c'est **COVERAGE**. 
 
-	<CoverageDescription xmlns="http://www.opengis.net/wcs" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" updateSequence="0" xsi:schemaLocation="http://www.opengis.net/wcs http://schemas.opengis.net/wcs/1.0.0/describeCoverage.xsd">
-		<CoverageOffering>
-			<name>1830_5155_16_CC46</name>
-			<lonLatEnvelope srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
-				<gml:pos>4.66596079716618 45.5819080900619</gml:pos>
-				<gml:pos>4.73140908341002 45.6278468986858</gml:pos>
-			</lonLatEnvelope>
-			<domainSet>
-				<spatialDomain>
-					<gml:Envelope srsName="EPSG:4326">
-						<gml:pos>4.66596079716618 45.5819080900619</gml:pos>
-						<gml:pos>4.73140908341002 45.6278468986858</gml:pos>
-					</gml:Envelope>
-					<gml:Envelope srsName="EPSG:3946">
-						<gml:pos>1830000 5155000</gml:pos>
-						<gml:pos>1835000 5160000</gml:pos>
-					</gml:Envelope>
-					<gml:RectifiedGrid dimension="2">
-						<gml:limits>
-							<gml:GridEnvelope>
-								<gml:low>0 0</gml:low>
-								<gml:high>31249 31249</gml:high>
-							</gml:GridEnvelope>
-						</gml:limits>
-						<gml:axisName>x</gml:axisName>
-						<gml:axisName>y</gml:axisName>
-						<gml:origin>
-							<gml:pos>1830000 5160000</gml:pos>
-						</gml:origin>
-						<gml:offsetVector>0.16 0</gml:offsetVector>
-						<gml:offsetVector>0 -0.16</gml:offsetVector>
-					</gml:RectifiedGrid>
-				</spatialDomain>
-			</domainSet>
-			<supportedCRSs>
-				<requestResponseCRSs>EPSG:3946</requestResponseCRSs>
-				<nativeCRSs>EPSG:3946</nativeCRSs>
-			</supportedCRSs>
-			<supportedFormats>
-				<formats>GTiff</formats>
-			</supportedFormats>
-			<supportedInterpolations default="nearest neighbor">
-				<interpolationMethod>nearest neighbor</interpolationMethod>
-				<interpolationMethod>bilinear</interpolationMethod>
-			</supportedInterpolations>
-		</CoverageOffering>
-	</CoverageDescription>
+Attention également à la casse dans le nom de la couverture demandée si vous testez manuellement les requêtes : le service WCS y est sensible. Ainsi la couverture *Carte_agglo_lyon_NO2_2012* (avec un l minuscule pour Lyon) ne sera pas trouvée.
 
-**Etape 3** : obtention de l'image sur une zone
+.. image:: _static/wcs_DescribeCoverage.png
 
-https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&FORMAT=GTiff&COVERAGE=1830_5155_16_CC46&BBOX=1832784,5156714.08000000007450581,1834141.43999999994412065,5158023.36000000033527613&CRS=EPSG:3946&RESPONSE_CRS=EPSG:3946&WIDTH=849&HEIGHT=819
+Cette requête permet d'obtenir tous les détails de la couverture comme son étendue géographique ou des informations sur les bandes.
 
-.. image:: _static/wcs_result.png
+
+**Etape 3** : obtention de la couverture sur une zone
+
+
+
+.. image:: _static/wcs_GetCoverage.png
 
 
 Utilisation du service CSW
