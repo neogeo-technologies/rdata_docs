@@ -366,7 +366,7 @@ https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=
 
 Un aperçu du raster obtenu avec une colorisation des 3 bandes :
 
-.. image:: _static/wcs_GetCoverageTiff.png
+.. image:: _static/wcs_GetCoverageTiff.tif
 
 Il est aussi possible de n'extraire qu'une seule bande en utilisant le paramètre RANGESUBSET. Ce paramètre permet de choisir les bandes à utiliser, des les réorganiser, etc.. Le plus simple est d'indiquer la bande par son index (la première bande commence à 1). Il est aussi possible de mixer des références aux bandes via des intervalles. Par exemple : RANGESUBSET=1,3:5,7
 
@@ -378,9 +378,9 @@ Un aperçu du fichier obtenu :
 
 .. image:: _static/wcs_GetCoverageGrid.png
 
-Enfin, il est aussi possible d'utiliser SUBSET avec des coordonnées absolues pour les pixels en indiquant le paramètre SUBSETTINGCRS=imageCRS : 
+Enfin, il est aussi possible d'utiliser SUBSET avec des coordonnées absolues pour les pixels en indiquant le paramètre &SUBSETTINGCRS=imageCRS : 
 
-https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/x-aaigrid&RANGESUBSET=1&COVERAGEID=Carte_agglo_Lyon_NO2_2012&SUBSET=x(100,100)&SUBSET=y(200,200)&SUBSETTINGCRS=imageCRS
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/tiff&COVERAGEID=Carte_agglo_Lyon_NO2_2012&SUBSET=x(100,200)&SUBSET=y(100,200)&SUBSETTINGCRS=imageCRS
 
 
 
