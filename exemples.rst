@@ -341,7 +341,9 @@ https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&REQUEST=GetCapabilitie
 
 .. image:: _static/wcs_GetCapabilities.png
 
-Dans la dernière partie du XML renvoyé, on peut voir la liste des couvertures disponibles pour ce service, dont la couverture **Carte_agglo_lyon_NO2_2012**, que nous utiliserons dans la suite de l'exemple.
+Parmi les informations retournées, on peut consulter les formats de sortie disponibles. Le WCS est un service destiné à fournir de la donnée brut (raw data). Il est donc recommandé de l'utiliser avec un format comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt qu'avec un des formats de sortie prévus pour la visualisation, comme **image/jpeg** ou **image/gif**.
+
+Dans la dernière partie du XML renvoyé, on trouve la liste des couvertures disponibles pour ce service, dont la couverture **Carte_agglo_lyon_NO2_2012**, que nous utiliserons dans la suite de l'exemple.
 	
 **Etape 2** : détail d'une couverture 
 
@@ -357,8 +359,6 @@ Cette requête permet d'obtenir tous les détails de la couverture comme son ét
 
 
 **Etape 3** : obtention de la couverture
-
-Le WCS est un service destiné à fournir de la donnée brut (raw data). Il est donc recommandé de l'utiliser avec des formats comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt des formats de sortie prévus pour la visualisation, comme image/jpeg ou image/gif.
 
 La requête suivante permet d'obtenir un extrait du raster au format TIFF :
 
