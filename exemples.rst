@@ -353,14 +353,35 @@ Attention également à la casse dans le nom de la couverture demandée si vous 
 
 .. image:: _static/wcs_DescribeCoverage.png
 
-Cette requête permet d'obtenir tous les détails de la couverture comme son étendue géographique ou des informations sur les bandes.
+Cette requête permet d'obtenir tous les détails de la couverture comme son étendue géographique ou des informations sur les bandes. On voit ainsi dans notre cas qu'il s'agit d'images multi-canaux à 3 bandes.
 
 
-**Etape 3** : obtention de la couverture sur une zone
+**Etape 3** : obtention de la couverture
 
+Le WCS est un service destiné à fournir de la donnée brut (raw data). Il est donc recommandé de l'utiliser avec des formats comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt des formats de sortie prévus pour la visualisation, comme image/jpeg ou image/gif.
 
+La requête suivante permet d'obtenir un extrait du raster au format TIFF :
 
-.. image:: _static/wcs_GetCoverage.png
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/tiff&COVERAGEID=Carte_agglo_Lyon_NO2_2012&SUBSET=x,http://www.opengis.net/def/crs/EPSG/0/2154(846414,847568)&SUBSET=y,http://www.opengis.net/def/crs/EPSG/0/2154(6521761,6522840)&OUTPUTCRS=urn:ogc:def:crs:EPSG::2154
+
+Un aperçu du raster obtenu avec une colorisation des 3 bandes :
+
+.. image:: _static/wcs_GetCoverageTiff.png
+
+Il est aussi possible de n'extraire qu'une seule bande en utilisant le paramètre RANGESUBSET. Ce paramètre permet de choisir les bandes à utiliser, des les réorganiser, etc.. Le plus simple est d'indiquer la bande par son index (la première bande commence à 1). Il est aussi possible de mixer des références aux bandes via des intervalles. Par exemple : RANGESUBSET=1,3:5,7
+
+Avec une seule bande, on peut alors utiliser le format de sortie x-aaigrid (Arc/Info ASCII Grid).
+
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/x-aaigrid&COVERAGEID=Carte_agglo_Lyon_NO2_2012&RANGESUBSET=1&SUBSET=x,http://www.opengis.net/def/crs/EPSG/0/2154(846414,847568)&SUBSET=y,http://www.opengis.net/def/crs/EPSG/0/2154(6521761,6522840)&OUTPUTCRS=urn:ogc:def:crs:EPSG::2154
+
+Un aperçu du fichier obtenu :
+
+.. image:: _static/wcs_GetCoverageGrid.png
+
+Enfin, il est aussi possible d'utiliser SUBSET avec des coordonnées absolues pour les pixels en indiquant le paramètre SUBSETTINGCRS=imageCRS : 
+
+https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/x-aaigrid&RANGESUBSET=1&COVERAGEID=Carte_agglo_Lyon_NO2_2012&SUBSET=x(100,100)&SUBSET=y(200,200)&SUBSETTINGCRS=imageCRS
+
 
 
 Utilisation du service CSW
