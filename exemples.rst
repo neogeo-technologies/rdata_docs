@@ -341,7 +341,7 @@ https://download.data.grandlyon.com/wcs/rdata?SERVICE=WCS&REQUEST=GetCapabilitie
 
 .. image:: _static/wcs_GetCapabilities.png
 
-Parmi les informations retournées, on peut consulter les formats de sortie disponibles. Le WCS est un service destiné à fournir de la donnée brut (raw data). Il est donc recommandé de l'utiliser avec un format comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt qu'avec un des formats de sortie prévus pour la visualisation, comme **image/jpeg** ou **image/gif**.
+Parmi les informations retournées, on peut consulter les formats de sortie disponibles. Le WCS est un service destiné à fournir de la donnée brute (raw data). Il est donc recommandé de l'utiliser avec un format comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt qu'avec un des formats de sortie prévus pour la visualisation, comme **image/jpeg** ou **image/gif**.
 
 Dans la dernière partie du XML renvoyé, on trouve la liste des couvertures disponibles pour ce service, dont la couverture **Carte_agglo_lyon_NO2_2012**, que nous utiliserons dans la suite de l'exemple.
 	
@@ -368,7 +368,7 @@ Un aperçu du raster obtenu avec une colorisation des 3 bandes :
 
 .. image:: _static/wcs_GetCoverageTiff.tif
 
-Il est aussi possible de n'extraire qu'une seule bande en utilisant le paramètre RANGESUBSET. Ce paramètre permet de choisir les bandes à utiliser, des les réorganiser, etc.. Le plus simple est d'indiquer la bande par son index (la première bande commence à 1). Il est aussi possible de mixer des références aux bandes via des intervalles. Par exemple : RANGESUBSET=1,3:5,7
+Il est aussi possible de n'extraire qu'une seule bande en utilisant le paramètre RANGESUBSET. Ce paramètre permet de choisir les bandes à utiliser, de les réorganiser, etc.. Le plus simple est d'indiquer la bande par son index (la première bande commence à 1). Il est aussi possible de mixer des références aux bandes via des intervalles. Par exemple : RANGESUBSET=1,3:5,7
 
 Avec une seule bande, on peut alors utiliser le format de sortie x-aaigrid (Arc/Info ASCII Grid).
 
