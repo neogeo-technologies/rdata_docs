@@ -24,7 +24,7 @@ Une des particularité du Javascript est d'être chargé et de s'exécuter côt�
 En PHP, Python, Java
 ---------------------
 
-Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les :ref:`exemples` proposés.
+Pas de problèmes avec ces languages qui s'exécutent côté serveur. Il suffit d'implémenter les `Exemples`_ proposés.
 
 Sur plateforme mobile
 ----------------------
