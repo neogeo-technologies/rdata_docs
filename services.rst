@@ -137,7 +137,7 @@ On peut également accéder à la totalité du contenu de la table (ou paginer c
 
 https://secure.grandlyon.webmapping.fr/ws/rdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
 
-pour consulter l'intégralité des enregistrements. 
+pour consulter l'intégralité des enregistrements. Il faut noter que sur l'appel de all.json (affichage de tous les champs), seul le mode compact est disponible. all.sjon contient aussi des informations supplémentaires liées à la pagination, à savoir des liens vers les pages précédentes et suivantes sous la forme d'une URL reprenant la valeur de maxfeatures utilisée  pour la page en cours et modifiant la valeur du paramètre "start" en fonction de la page en cours. 
 
 
 Les services REST-JSON sont ainsi particulièrement adaptés à la constition de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données. 
