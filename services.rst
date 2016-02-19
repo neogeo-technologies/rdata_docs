@@ -143,23 +143,21 @@ pour consulter l'intégralité des enregistrements.
 Les services REST-JSON sont ainsi particulièrement adaptés à la constition de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données. 
 
 
-Service OSM (OpenStreetMap)
+Service WMTS
 ---------------------------
 
-La plateforme Data propose un service de fond de carte tuilé construit à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Rhône-Alpes. Il est utilisable à partir de l'URL :
+La plateforme Data propose un service de fonds de carte tuilés au standard WMTS. Deuxcouches y sont proposées, d'une part l'orthophotographie 2015 de la Métropole et d'autre part une couverture construite à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Auvergne-Rhône-Alpes. Le service WMTS est utilisable à partir de l'URL :
 
-http://openstreetmap.data.grandlyon.com
+http://openstreetmap.data.grandlyon.com/wmts/
 
-.. image:: http://openstreetmap.data.grandlyon.com/?LAYERS=osm_grandlyon&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&STYLES=&EXCEPTIONS=application%2Fvnd.ogc.se_inimage&FORMAT=image%2Fjpeg&SRS=EPSG%3A4326&BBOX=4.8484037210919,45.764534434461,4.8548554273902,45.770986140759&WIDTH=256&HEIGHT=256
-   :alt: GrandLyon Data : le service OSM
+.. image:: http://openstreetmap.data.grandlyon.com/wmts/?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=osm_grandlyon&STYLE=default&TILEMATRIXSET=GoogleMapsCompatible&TILEMATRIX=16&TILEROW=23379&TILECOL=33653&FORMAT=image%2Fpng
+   :alt: GrandLyon Data : le service WMTS OpenStreetMap
    :class: floatingflask
-
-Le nom de couche à utiliser est tout simplement osm_grandlyon. La couche est disponible dans les projections suivantes :
-
-* ESPG:3857 et EPSG:900913 (Mercator Sphérique)
-
-* EPSG:4326 (WGS84)
-
-* EPSG:4171 (RGF93)
-
-Veuillez noter que ces deux derniers systèmes sont définis en degrés et non en mètres, et que leur utilisation pour faire une carte (et non lire les données) aboutit à un résultat visuel un peu écrasé qui est tout à fait normal (puisque vous projetez de fait des coordonnées géographiques sphériques sur un plan, le fichier ou l'écran. Cette projection est nommée `plate-carrée <http://fr.wikipedia.org/wiki/Projection_cylindrique_%C3%A9quidistante>`_).
+   
+.. image:: http://openstreetmap.data.grandlyon.com/wmts/?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=ortho2015&STYLE=default&TILEMATRIXSET=GoogleMapsCompatible&TILEMATRIX=16&TILEROW=23378&TILECOL=33652&FORMAT=image%2Fjpeg
+   :alt: GrandLyon Data : le service WMTS Orthophotographie 2015
+   :class: floatingflask
+   
+Le nom des couche à utiliser est respectivement osm_grandlyon et ortho2015. Les couche sont disponibles en projection Mercator Sphérique (EPSG:3857 et EPSG:900913) et sont donc à ce titre compatibles avec d'autres services du même type, GoogleMaps ou API-IGN.
+Pour utiliser le service WMTS dans QGIS? veillez à utiliser l'URL du GetCapabilities comme URL du service : 
+http://openstreetmap.data.grandlyon.com/wmts/?REQUEST=GetCapabilities&SERVICE=WMTS
