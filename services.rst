@@ -146,7 +146,7 @@ Les services REST-JSON sont ainsi particulièrement adaptés à la constition de
 Service WMTS
 ---------------------------
 
-La plateforme Data propose un service de fonds de carte tuilés au standard WMTS. Deuxcouches y sont proposées, d'une part l'orthophotographie 2015 de la Métropole et d'autre part une couverture construite à partir des données `OpenStreetMap <openstreetmap.fr>`_ de la région Auvergne-Rhône-Alpes. Le service WMTS est utilisable à partir de l'URL :
+La plateforme Data propose un service de fonds de carte tuilés au standard WMTS. Deux couches y sont proposées, d'une part l'orthophotographie 2015 de la Métropole et d'autre part une couverture construite à partir des données `OpenStreetMap <openstreetmap.fr>`_ des régions Auvergne-Rhône-Alpes et Bourgogne. Le service WMTS est utilisable à partir de l'URL :
 
 http://openstreetmap.data.grandlyon.com/wmts/
 
@@ -158,6 +158,6 @@ http://openstreetmap.data.grandlyon.com/wmts/
    :alt: GrandLyon Data : le service WMTS Orthophotographie 2015
    :class: floatingflask
    
-Le nom des couche à utiliser est respectivement osm_grandlyon et ortho2015. Les couche sont disponibles en projection Mercator Sphérique (EPSG:3857 et EPSG:900913) et sont donc à ce titre compatibles avec d'autres services du même type, GoogleMaps ou API-IGN.
-Pour utiliser le service WMTS dans QGIS? veillez à utiliser l'URL du GetCapabilities comme URL du service : 
+Le nom des couches à utiliser est respectivement osm_grandlyon et ortho2015. Les couches sont disponibles en projection Mercator Sphérique (EPSG:3857 et EPSG:900913) et sont donc à ce titre compatibles avec d'autres services du même type, GoogleMaps ou API-IGN.
+Pour utiliser le service WMTS dans QGIS veillez à utiliser l'URL du GetCapabilities comme URL du service : 
 http://openstreetmap.data.grandlyon.com/wmts/?REQUEST=GetCapabilities&SERVICE=WMTS
