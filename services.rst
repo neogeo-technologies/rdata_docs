@@ -146,7 +146,7 @@ Les services REST-JSON sont ainsi particulièrement adaptés à la constition de
 Service WMTS
 ---------------------------
 
-La plateforme Data propose un service de fonds de carte tuilés au standard WMTS. Deux couches y sont proposées, d'une part l'orthophotographie 2015 de la Métropole et d'autre part une couverture construite à partir des données `OpenStreetMap <openstreetmap.fr>`_ des régions Auvergne-Rhône-Alpes et Bourgogne. Le service WMTS est utilisable à partir de l'URL :
+La plateforme Data propose un service de fonds de carte tuilés au standard WMTS. Deux couches y sont proposées, d'une part l'orthophotographie 2015 de la Métropole et d'autre part une couverture construite à partir des données `OpenStreetMap <http://www.openstreetmap.fr>`_ des régions Auvergne-Rhône-Alpes et Bourgogne. Le service WMTS est utilisable à partir de l'URL :
 
 http://openstreetmap.data.grandlyon.com/wmts/
 
