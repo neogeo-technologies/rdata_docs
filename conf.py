@@ -57,8 +57,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Smartdata'
-copyright = u'2014, GrandLyon'
+project = u'Data Grand Lyon'
+copyright = u'2016, GrandLyon'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -210,7 +210,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'Smartdata.tex', u'Smartdata Documentation',
+  ('index', 'Smartdata.tex', u'Data Grand Lyon Documentation',
    u'GrandLyon', 'manual'),
 ]
 
@@ -240,7 +240,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'smartdata', u'Smartdata Documentation',
+    ('index', 'smartdata', u'Data GrandLyon Documentation',
      [u'GrandLyon'], 1)
 ]
 
@@ -254,7 +254,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'Smartdata', u'Smartdata Documentation',
+  ('index', 'Smartdata', u'Data Grand Lyon Documentation',
    u'GrandLyon', 'Smartdata', 'One line description of project.',
    'Miscellaneous'),
 ]
@@ -275,7 +275,7 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Smartdata'
+epub_title = u'Data Grand Lyon'
 epub_author = u'GrandLyon'
 epub_publisher = u'GrandLyon'
 epub_copyright = u'2014, GrandLyon'
