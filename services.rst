@@ -114,7 +114,7 @@ L'utilisation de ce service n'est pas simple au premier abord mais il est très 
 Services REST (en JSON)
 -----------------------
 
-Pour accéder aux données sous forme alphanumérique (par opposition aux services cartographiquesà, notre insfrastructure dispose de services JSON permettant une navigation facile et rapide entre les différents jeux de données mis à disposition.
+Pour accéder aux données sous forme alphanumérique (par opposition aux services cartographiques), notre infrastructure dispose de services JSON permettant une navigation facile et rapide entre les différents jeux de données mis à disposition.
 
 Le point d'entrée de chaque service est construit sur le pattern suivant : 
 
@@ -166,7 +166,7 @@ A chaque table est associée une URL de la forme :
 
 De lien en lien, vous pouvez alors naviguer vers la description des tables.
 
-*Exemple* : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre
+*Exemple* : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.json
 
 ::
 
@@ -218,17 +218,17 @@ De lien en lien, vous pouvez alors naviguer vers la description des tables.
 
 Liste des champs affichés :
 
-* **is_pk**: Est-ce l’identifiant de la couche 
+* **is_pk**: est-ce l’identifiant de la couche 
 
-* **column_type**: Type de champ (numérique, texte etc)
+* **column_type**: type de champ (numérique, texte, etc.)
 
 * **precision**: longueur du champ
 
-* **is_nullable**: Peut il y avoir des valeurs nulles
+* **is_nullable**: peut il y avoir des valeurs nulles ?
 
 * **href**: valeurs distinctes possible de l’attribut ciblé 
 
-* **column_name**: Nom du champ
+* **column_name**: nom du champ
 
 L'url contenue dans href permet de consulter les différentes valeurs présentes dans un champ particulier (par ex. les essences des arbres de la métropole).
 
@@ -283,7 +283,7 @@ https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/
 
 On peut également accéder à la totalité du contenu de la table (ou paginer ce contenu) en utilisant une URL du type :
 
-https://download.data.grandlyon.com/ws/rdata/all.json?compact=false
+https://download.data.grandlyon.com/ws/rdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
 
 pour consulter l'intégralité des enregistrements. 
 
