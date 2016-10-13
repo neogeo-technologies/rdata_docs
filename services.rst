@@ -114,15 +114,40 @@ L'utilisation de ce service n'est pas simple au premier abord mais il est très 
 Services REST (en JSON)
 -----------------------
 
-Les services JSON de notre infrastructure permettent une navigation facile et rapide entre les différents jeux de données mis à disposition. Chaque service possède un point d'entrée dédié :
+Pour accéder aux données sous forme alphanumérique (par opposition aux services cartographiquesà, notre insfrastructure dispose de services JSON permettant une navigation facile et rapide entre les différents jeux de données mis à disposition.
 
-https://download.data.grandlyon.com/ws/grandlyon/all.json
+Le point d'entrée de chaque service est construit sur le pattern suivant : 
+
+``https://download.data.grandlyon.com/ws/<service>/all.json``
+
+Les services actuellement disponibles sont "grandlyon" et "rdata" :
+
+``https://download.data.grandlyon.com/ws/grandlyon/all.json``
 
 et
 
-https://download.data.grandlyon.com/ws/rdata/all.json
+``https://download.data.grandlyon.com/ws/rdata/all.json``
 
 Ces documents listent l'ensemble des tables disponibles en consultation/téléchargement. Certaines peuvent avoir un accès restreint en fonction de vos droits.
+
+**Exemple de résultat** : 
+
+```json
+   {
+      results: [
+      {
+         table_schema: "abr_arbres_alignement",
+         href: "https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.json",
+         table_name: "abrarbre"
+      },
+      {
+         table_schema: "adr_voie_lieu",
+         href: "https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adradresse.json",
+         table_name: "adradresse"
+      },
+      ...
+   }
+```
 
 De lien en lien, vous pouvez alors naviguer vers la description des tables (par ex. https://download.data.grandlyon.com/ws/grandlyon/fpc_fond_plan_communaut.fpcplandeau.json), les différentes valeurs présentes dans un champ particulier (par ex. les essences des arbres de la métropole : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json). Ce dernier mode dispose d'options particulières :
 
