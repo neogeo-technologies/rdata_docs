@@ -114,23 +114,167 @@ L'utilisation de ce service n'est pas simple au premier abord mais il est très 
 Services REST (en JSON)
 -----------------------
 
-Les services JSON de notre infrastructure permettent une navigation facile et rapide entre les différents jeux de données mis à disposition. Chaque service possède un point d'entrée dédié :
+Pour accéder aux données sous forme alphanumérique (par opposition aux services cartographiques), notre infrastructure dispose de services JSON permettant une navigation facile et rapide entre les différents jeux de données mis à disposition.
 
-https://download.data.grandlyon.com/ws/grandlyon/all.json
+Le point d'entrée de chaque service est construit sur le pattern suivant : 
+
+``https://download.data.grandlyon.com/ws/<service>/all.json``
+
+Les services actuellement disponibles sont "grandlyon" et "rdata" :
+
+``https://download.data.grandlyon.com/ws/grandlyon/all.json``
 
 et
 
-https://download.data.grandlyon.com/ws/rdata/all.json
+``https://download.data.grandlyon.com/ws/rdata/all.json``
 
 Ces documents listent l'ensemble des tables disponibles en consultation/téléchargement. Certaines peuvent avoir un accès restreint en fonction de vos droits.
 
-De lien en lien, vous pouvez alors naviguer vers la description des tables (par ex. https://download.data.grandlyon.com/ws/grandlyon/fpc_fond_plan_communaut.fpcplandeau.json), les différentes valeurs présentes dans un champ particulier (par ex. les essences des arbres de la métropole : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json). Ce dernier mode dispose d'options particulières :
+**Exemple de résultat** : 
 
-* compact : si false, décrit la valeur pour chacun des enregistrements, sinon liste les différentes valeurs trouvées dans la table. True par défaut.
+:: 
+  
+  {
+      
+      results: [{
+      
+         table_schema: "abr_arbres_alignement",
+         
+         href: "https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.json",
+         
+         table_name: "abrarbre"
+      
+      },{
+         
+         table_schema: "adr_voie_lieu",
+         
+         href: "https://download.data.grandlyon.com/ws/grandlyon/adr_voie_lieu.adradresse.json",
+         
+         table_name: "adradresse"
 
-* maxfeatures : indique le nombre maximal d'enregistrement à faire remonter par le service. 1000 par défaut.
+      },{
+      
+         ...
+         
+      }]
 
-* start : indique l'index de départ, afin de pouvoir paginer les résultats. 1 par défaut.
+   }
+
+A chaque table est associée une URL de la forme : 
+
+``https://download.data.grandlyon.com/ws/<service>/<table_schema>.<table_name>.json``
+
+De lien en lien, vous pouvez alors naviguer vers la description des tables.
+
+*Exemple* : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre.json
+
+::
+
+   {
+      
+      requested_table: "abr_arbres_alignement.abrarbre",
+      
+      nb_records: 92216,
+      
+      database_href: "https://download.data.grandlyon.com/ws/grandlyon/all.json",
+      
+      nb_results: 26,
+      
+      results: [{
+      
+         is_pk: false,
+         
+         column_type: "varchar",
+         
+         precision: 50,
+         
+         is_nullable: "YES",
+         
+         href: "https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json",
+         
+         column_name: "essencefrancais"
+      
+      },{
+         
+         is_pk: false,
+         
+         column_type: "int4",
+         
+         precision: 32,
+         
+         is_nullable: "YES",
+         
+         href: "https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/circonference_cm.json",
+         
+         column_name: "circonference_cm"
+      
+      },{
+      
+         ...
+         
+      }]
+
+   }
+
+Liste des champs affichés :
+
+* **is_pk**: est-ce l’identifiant de la couche 
+
+* **column_type**: type de champ (numérique, texte, etc.)
+
+* **precision**: longueur du champ
+
+* **is_nullable**: peut il y avoir des valeurs nulles ?
+
+* **href**: valeurs distinctes possible de l’attribut ciblé 
+
+* **column_name**: nom du champ
+
+L'url contenue dans href permet de consulter les différentes valeurs présentes dans un champ particulier (par ex. les essences des arbres de la métropole).
+
+*Exemple* : https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/essencefrancais.json
+
+::
+
+   {
+      
+      fields: [
+         
+         "essencefrancais"
+      
+      ],
+      
+      nb_results: 401,
+      
+      values: [
+         
+         "Magnolia à grandes fleurs",
+        
+         "Erable rouge 'Schlesingeri'",
+         
+         "Arbre puant des Chinois",
+         
+         "Chène rouge d'Espagne",
+         
+         "Frêne d'Amérique",
+         
+         "Orme champêtre",
+         
+         "Chêne pédonculé fastigié, Chêne pyramidal",
+         
+         ...
+      
+      ]
+   
+   }
+
+Ce dernier mode dispose d'options particulières :
+
+* **compact** : si false, décrit la valeur pour chacun des enregistrements, sinon liste les différentes valeurs trouvées dans la table. True par défaut.
+
+* **maxfeatures** : indique le nombre maximal d'enregistrement à faire remonter par le service. 1000 par défaut.
+
+* **start** : indique l'index de départ, afin de pouvoir paginer les résultats. 1 par défaut.
 
 On peut ainsi demander au service les essences de 50 arbres à partir du 100e dans la base :
 
@@ -139,10 +283,30 @@ https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/
 
 On peut également accéder à la totalité du contenu de la table (ou paginer ce contenu) en utilisant une URL du type :
 
-https://download.data.grandlyon.com/ws/rdata/all.json?compact=false
+https://download.data.grandlyon.com/ws/rdata/jcd_jcdecaux.jcdvelov/all.json?compact=false
 
-pour consulter l'intégralité des enregistrements.Il faut noter que sur l'appel de all.json (affichage de tous les champs), seul le mode compact est disponible. all.json contient aussi des informations supplémentaires liées à la pagination, à savoir des liens vers les pages précédentes et suivantes sous la forme d'une URL reprenant la valeur de maxfeatures utilisée  pour la page en cours et modifiant la valeur du paramètre "start" en fonction de la page en cours. 
+pour consulter l'intégralité des enregistrements. 
 
+Il faut noter que sur l'appel de all.json (affichage de tous les champs), seul le mode compact est disponible. 
+
+Le nombre d’objet renvoyé par défaut est fixé à 1000 pour des raisons de performances. Il est possible d’outrepasser ce retour grâce au paramètre « maxfeatures ».
+
+*Exemple* : 
+https://download.data.grandlyon.com/ws/grandlyon/gip_proprete.gipdecheterie/all.json?maxfeatures=10
+
+Il est également possible de filtrer les objets renvoyés selon une valeur d'attribut avec une url de la forme : 
+
+``https://download.data.grandlyon.com/ws/<service>/<table_schema>.<table_name>/all.json?field=<attribut>&value=<valeur>``
+
+*Exemple* : 
+https://download.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/all.json?field=essencefrancais&value=Marronnier%20de%20Virginie
+
+all.json contient aussi des informations supplémentaires liées à la pagination, à savoir des liens vers les pages précédentes et suivantes sous la forme d'une URL reprenant la valeur de maxfeatures utilisée  pour la page en cours et modifiant la valeur du paramètre "start" en fonction de la page en cours. 
+
+*Exemple* : 
+https://download.data.grandlyon.com/ws/grandlyon/gip_proprete.gipdecheterie/all.json?maxfeatures=5&start=10
+
+Cette URL retourne les enregistrements 10 à 15 de la couche déchetterie.
 
 Les services REST-JSON sont ainsi particulièrement adaptés à la constitution de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données.
 
