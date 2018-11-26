@@ -393,3 +393,19 @@ Le Grand Lyon propose deux démonstrateurs cartographiques représentant respect
 * \(2\) http://demo.data.grandlyon.com/wmst/reseau_velov.html
 
 Chaque station (bruit comme Vélo'V) est interrogeable (par un simple clique sur la carte) et permet d'accéder par un hyperlien à la représentation graphique des données. Un *slider* permet de naviguer sur l'axe temporel.
+
+
+
+Services KML
+------------
+Le GrandLyon publie ses données au format KML. Les données de chaque service est accessible via l'url suivante : 
+https://download.data.grandlyon.com/kml/[nom_du_service]/?request=layer&typename=[schema].[name]
+
+*Exemple* : https://download.data.grandlyon.com/kml/grandlyon/?request=layer&typename=pvo_patrimoine_voirie.pvostationvelov
+
+Ce format est adapté pour Google Earth et pour l'API Javascript Maps de Google.
+
+Attention, pour des questions de performance, le KML embarque pour également les URLs WMS des services et les utilise à la place des objets vecteur lorsque le nombre d'objets à afficher est trop important (supérieur à 1000).
+
+Enfin, il est également possible de consulter l'ensemble des couches dans une même arboresence en utilisant le paramètre ``request=list`` (au lieu de request=layer).
+*Exemple* : https://download.data.grandlyon.com/kml/grandlyon?request=list
