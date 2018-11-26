@@ -398,7 +398,7 @@ Chaque station (bruit comme Vélo'V) est interrogeable (par un simple clique sur
 
 Services KML
 ------------
-Le GrandLyon publie ses données au format KML. Les données de chaque service est accessible via l'url suivante : 
+Le GrandLyon publie ses données au format KML. Les données de chaque service sont accessibles via l'url suivante : 
 https://download.data.grandlyon.com/kml/[nom_du_service]/?request=layer&typename=[schema].[name]
 
 *Exemple* : https://download.data.grandlyon.com/kml/grandlyon/?request=layer&typename=pvo_patrimoine_voirie.pvostationvelov
