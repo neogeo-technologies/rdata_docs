@@ -311,6 +311,21 @@ Cette URL retourne les enregistrements 10 à 15 de la couche déchetterie.
 Les services REST-JSON sont ainsi particulièrement adaptés à la constitution de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données.
 
 
+Export Shapefile
+---------------
+L'export shapefile est utilisable depuis les service JSON par l'utilisation d'une extension .shp au niveau de l'appel de couche (par exemple : https://download.data.grandlyon.com/ws/rdata/pvo_patrimoine_voirie.pvotrafic.shp). Cela renvoie alors à l'utilisateur un zip contenant un shapefile (SHP + SHX + DBF) de la couche. 
+
+En outre, plusieurs paramètres sont à la disposition de l'utilisateur :
+
+* srsname, qui permet de spécifier le système de coordonnées pour l'export (de la forme EPSG:XXXX, à choisir entre 4171, 3946, 2154, 4326 et 4258)
+
+* une couche tierce de découpage, qui va être identifiée par un attribut mask_layer (nom de la couche de découpage), mask_field (champs sur lequel filtrer cette couche) et enfin mask_value (valeur du champ mask_field pour générer le polygone de découpe). Cela permet de récupérer une entité géométrique qui va servir de filtre à la couche principale demandée. 
+
+Exemple https://download.data.grandlyon.com/ws/grandlyon/gic_collecte.gicsiloverre.shp?mask_db=grandlyon&mask_layer=adr_voie_lieu.adrcommune&mask_field=insee&mask_value=69034 
+
+La couche des silos verre sera ici découpée pour n'en récupérer que les objets situés dans le polygone ayant l'attribut insee à 69034 de la couche adr_voie_lieu.adrcommune
+
+
 Service WMTS
 ------------
 
