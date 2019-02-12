@@ -395,7 +395,7 @@ Représentation cartographique (WMS-Time)
 
 Les données sont aussi disponibles à travers un service WMS étendu (voir plus haut plus une description du WMS).
 
-* http://mapserver.middle.data.grandlyon.com/wms/ldata?
+* https://download.data.grandlyon.com/wms/ldata?
 
 Ce service a la particularité de proposer des couches supportant les requêtes temporelles. Les couches concernées (ou ``LAYER`` dans le vocabulaire OGC:WMS) prennent le suffixe ``_time``. Ainsi vous trouverez les paires de couches WMS suivantes :
 
