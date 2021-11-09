@@ -369,7 +369,7 @@ Ils sont accéssibles ici:
 * https://imagerie.data.grandlyon.com/3857/wmts?service=WTMS&request=getcapabilities
 * https://imagerie.data.grandlyon.com/3946/wmts?service=WTMS&request=getcapabilities
 
-Ces flux disposent d'un cache et sont à privilégier par rapports aux flux WMS disponibles sur https://download.data.grandlyon.com/wms/grandlyon
+Ces flux disposent d'un cache et sont à privilégier par rapport aux flux WMS disponibles sur https://download.data.grandlyon.com/wms/grandlyon
 
 Services OpenMapTiles
 ---------------------
@@ -378,11 +378,11 @@ Ce service propose des tuiles OpenMaptiles à utiliser pour des fonds de carte.
 
 Client de démonstration: https://openmaptiles.data.grandlyon.com/data/v3/#8.37/45.796/4.592
 
-Ces tuiles sont mise à jour de façon hebdomadaires en utilisant les données OpenStreetMap.
+Ces tuiles sont mises à jour de façon hebdomadaires en utilisant les données OpenStreetMap.
 
 https://openmaptiles.data.grandlyon.com/data/v3/1/1/0.pbf
 
-Ces tuiles peuvent être utilisées par les principaux framework SIG web (MaplibreGL, Leaflet,...) par exemple : https://openmaptiles.org/docs/website/maplibre-gl-js/
+Ces tuiles peuvent être utilisées par les principaux frameworks SIG web (MaplibreGL, Leaflet,...) par exemple : https://openmaptiles.org/docs/website/maplibre-gl-js/
 
 
 Services SOS (données de capteurs)
@@ -468,21 +468,21 @@ Enfin, il est également possible de consulter l'ensemble des couches dans une m
 Services MVT
 ------------
 
-Les jeux de donnés vectoriels sont disponible au format MVT (Mapbox Vector Tile)[https://docs.mapbox.com/vector-tiles/specification/]
+Les jeux de données vectoriels sont disponibles au format MVT (Mapbox Vector Tile)[https://docs.mapbox.com/vector-tiles/specification/]
 
 https://download.data.grandlyon.com/mvt/grandlyon?LAYERS=car_care.carencadrmtloyer_latest&map.imagetype=mvt&tilemode=gmap&tile=1052+730+11&mode=tile
 
-Ce format est comparable au WFS mais est tuilé et les geométries sont simplifiés. Le but est d'être beaucoup plus rapide que le WFS en permettant en plus d'être mis en cache. En sortie on obtient une tuile encodée en utilisant le format (protobuf)[https://fr.wikipedia.org/wiki/Protocol_Buffers] (équivalenet plus compact du JSON)
+Ce format est comparable au WFS mais est tuilé et les geométries sont simplifiées. Le but est d'être beaucoup plus rapide que le WFS en permettant en plus d'être mis en cache. En sortie on obtient une tuile encodée en utilisant le format (PBF)[https://fr.wikipedia.org/wiki/Protocol_Buffers]  (protobuf) (équivalent plus compact du JSON)
 
-Ces tuiles peuvent être utilisés par les client web comme MapboxGL, MapLibre ou OpenLayers.
+Ces tuiles peuvent être utilisées par les clients web comme MapboxGL, MapLibre ou OpenLayers.
 
-QGis peut aussi lire ces tuiles en utilisant le plugin "Vector Tiles Reader"
+QGis peut aussi lire ces tuiles en utilisant le plugin "Vector Tiles Reader". QGIS 3.20 gère le MVT.
 
 
 Geocoder Photon
 ---------------
 
-Ce service permet d'effectuer des géocodages directes (conversion d'une adresse postale ou nom de lieu en coordonnées géographiques) et inversés (conversion de coordonnées géographiques en adresse postale ou nom de lieu).
+Ce service permet d'effectuer des géocodages directs (conversion d'une adresse postale ou nom de lieu en coordonnées géographiques) et inversés (conversion de coordonnées géographiques en adresse postale ou nom de lieu).
 
 Il est propulsé par l'outil libre Photon (cf. https://github.com/komoot/photon), alimenté par les données OpenStreetMap relatives à l'ancienne région Rhône-Alpes (cf. https://download.geofabrik.de/europe/france/rhone-alpes.html). 
 
@@ -526,7 +526,7 @@ Pour interroger les statistiques, les requêtes prennent la forme suivante :
 
 Les paramètres demandés (tous insensibles à la casse):
 
- * UUID l'uuid du jeux de données
+ * UUID l'uuid du jeu de données
  * start : format YYYY-MM-DD la date de début, si la granularité est la semaine ou le mois et que la date est "dans" la semaine/mois, je prends le début de la semaine/mois
  * end : format YYYY-MM-DD la date de fin, si la granularité est la semaine ou le mois et que la date est "dans" la semaine/mois, je prends la fin de semaine/mois
  * granularity : day, week, year.
@@ -535,5 +535,5 @@ Pour la réponse :
 
 Tableau de dictionnaire : un dictionnaire par élément de granularité (jour, semaine, mois)
 Le dictionnaire contient:
- * date: format YYYY-MM-DD la date de début de élément de granularité
+ * date: format YYYY-MM-DD la date de début de l'élément de granularité
  * count: le nombre de fois que la ressource a été vue, indépendamment du service (WMS/WFS...)
