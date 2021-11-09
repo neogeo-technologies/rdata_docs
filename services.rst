@@ -76,13 +76,13 @@ https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&request=GetCapabil
 
 renvoie ainsi un document XML listant (entre autres) les couches mises à disposition par le service, dont vous obtiendrez la description détaillée à l'aide d'une requête DescribeCoverage de ce type :
 
-https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&request=DescribeCoverage&version=1.1.0&identifiers=Ortho2009_vue_ensemble_16cm_CC46,1830_5155_16_CC46
+https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&request=DescribeCoverage&version=1.1.0&identifiers=MNT2015_Altitude_10m_WCS,road_ln_p
 
-Les informations retournées ne concernent plus que les couches spécifiées dans le paramètre identifiers (ici Ortho2009_vue_ensemble_16cm_CC46 et 1830_5155_16_CC46) et sont un peu plus détaillées que dans le GetCapabilities.
+Les informations retournées ne concernent plus que les couches spécifiées dans le paramètre identifiers (ici MNT2015_Altitude_10m_WCS et road_ln_p) et sont un peu plus détaillées que dans le GetCapabilities.
 
 Enfin, pour obtenir la couverture souhaitée, on utilise une requête GetCoverage de ce type :
 
-https://download.data.grandlyon.com/wcs/grandlyon?service=WCS&BBOX=1830000,5155000,1830100,5155100&request=GetCoverage&version=1.1.0&format=image/tiff&crs=EPSG::3946&identifiers=1830_5155_16_CC46
+https://download.data.grandlyon.com/wcs/grandlyon?SERVICE=WCS&VERSION=1.0.0&REQUEST=GetCoverage&FORMAT=GTiff&COVERAGE=road_ln_p&BBOX=1836243.96544679999351501,5162352.9513221001252532,1842093.96544679999351501,5168132.9513221001252532&CRS=EPSG:3946&RESPONSE_CRS=EPSG:3946&WIDTH=585&HEIGHT=578
 
 Encore une fois, c'est un service standardisé et les librairies cartographiques disposent des classes nécessaires à une utilisation simple de ce type de service.
 
@@ -310,6 +310,19 @@ Cette URL retourne les enregistrements 10 à 15 de la couche déchetterie.
 
 Les services REST-JSON sont ainsi particulièrement adaptés à la constitution de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données.
 
+Services REST (en CSV)
+----------------------
+
+*Exemple* :
+https://download.data.grandlyon.com/ws/grandlyon/gip_proprete.gipdecheterie/all.csv?maxfeatures=5&start=10
+
+De la même façon que l'on requête le service JSON, on peut demander un extrait CSV en remplaçant l'extension ".json" de l'URL par ".csv".
+
+Il est possible de remplacer le séparateur décimal en ajoutant 'ds=,' ou 'ds=.' dans la requête.
+
+Le séparateur de colonne peut aussi être changé en utilisant l'option "separator=;" par exemple.
+
+Un paramètre supplémentaire "geometry=on" (off par défaut) ajoute une colonne "WKT" contenant la géométrie de l'objet au format [WKT](https://fr.wikipedia.org/wiki/Well-known_text)
 
 Export Shapefile
 ---------------
@@ -344,6 +357,33 @@ https://openstreetmap.data.grandlyon.com/wmts/
 Le nom des couches à utiliser est respectivement osm_grandlyon et ortho2015. Les couches sont disponibles en projection Mercator Sphérique (EPSG:3857 et EPSG:900913) et sont donc à ce titre compatibles avec d'autres services du même type, GoogleMaps ou API-IGN.
 Pour utiliser le service WMTS dans QGIS veillez à utiliser l'URL du GetCapabilities comme URL du service :
 https://openstreetmap.data.grandlyon.com/wmts/?REQUEST=GetCapabilities&SERVICE=WMTS
+
+Service WMTS (Orthophotographies)
+---------------------------------
+
+Des services WMTS/WMS supplémentaires existent diffusant des flux d'orthophotographies.
+
+Ils sont accéssibles ici:
+* https://imagerie.data.grandlyon.com/all/wmts?service=WTMS&request=getcapabilities
+* https://imagerie.data.grandlyon.com/2154/wmts?service=WTMS&request=getcapabilities
+* https://imagerie.data.grandlyon.com/3857/wmts?service=WTMS&request=getcapabilities
+* https://imagerie.data.grandlyon.com/3946/wmts?service=WTMS&request=getcapabilities
+
+Ces flux disposent d'un cache et sont à privilégier par rapports aux flux WMS disponibles sur https://download.data.grandlyon.com/wms/grandlyon
+
+Services OpenMapTiles
+---------------------
+
+Ce service propose des tuiles OpenMaptiles à utiliser pour des fonds de carte.
+
+Client de démonstration: https://openmaptiles.data.grandlyon.com/data/v3/#8.37/45.796/4.592
+
+Ces tuiles sont mise à jour de façon hebdomadaires en utilisant les données OpenStreetMap.
+
+https://openmaptiles.data.grandlyon.com/data/v3/1/1/0.pbf
+
+Ces tuiles peuvent être utilisées par les principaux framework SIG web (MaplibreGL, Leaflet,...) par exemple : https://openmaptiles.org/docs/website/maplibre-gl-js/
+
 
 Services SOS (données de capteurs)
 ----------------------------------
@@ -424,3 +464,76 @@ Attention, pour des questions de performance, le KML embarque pour également le
 
 Enfin, il est également possible de consulter l'ensemble des couches dans une même arboresence en utilisant le paramètre ``request=list`` (au lieu de request=layer).
 *Exemple* : https://download.data.grandlyon.com/kml/grandlyon?request=list
+
+Services MVT
+------------
+
+Les jeux de donnés vectoriels sont disponible au format MVT (Mapbox Vector Tile)[https://docs.mapbox.com/vector-tiles/specification/]
+
+https://download.data.grandlyon.com/mvt/grandlyon?LAYERS=car_care.carencadrmtloyer_latest&map.imagetype=mvt&tilemode=gmap&tile=1052+730+11&mode=tile
+
+Ce format est comparable au WFS mais est tuilé et les geométries sont simplifiés. Le but est d'être beaucoup plus rapide que le WFS en permettant en plus d'être mis en cache. En sortie on obtient une tuile encodée en utilisant le format (protobuf)[https://fr.wikipedia.org/wiki/Protocol_Buffers] (équivalenet plus compact du JSON)
+
+Ces tuiles peuvent être utilisés par les client web comme MapboxGL, MapLibre ou OpenLayers.
+
+QGis peut aussi lire ces tuiles en utilisant le plugin "Vector Tiles Reader"
+
+
+Geocoder Photon
+---------------
+
+Ce service permet d'effectuer des géocodages directes (conversion d'une adresse postale ou nom de lieu en coordonnées géographiques) et inversés (conversion de coordonnées géographiques en adresse postale ou nom de lieu).
+
+Il est propulsé par l'outil libre Photon (cf. https://github.com/komoot/photon), alimenté par les données OpenStreetMap relatives à l'ancienne région Rhône-Alpes (cf. https://download.geofabrik.de/europe/france/rhone-alpes.html). 
+
+La documentation officielle de l'API de recherche de Photon est renseignée sur GitHub, https://github.com/komoot/photon#search-api.
+
+Le lien pour réaliser une requête est le suivant (remplacer les .. par le lieu à géocoder): 
+https://download.data.grandlyon.com/geocoding/photon/api?q=...
+Exemples : 
+https://download.data.grandlyon.com/geocoding/photon/api?q=lyon 
+https://download.data.grandlyon.com/geocoding/photon/api?q=%22Rue%20garibaldi%22
+
+
+Statistiques liées à un jeu de données
+--------------------------------------
+
+Pour interroger les statistiques, les requêtes prennent la forme suivante :
+`https://download.data.grandlyon.com/statistiques/dataset?UUID=ad771ef2-7a40-11ea-ae2d-dbfa27ebc23c&start=2019-04-09&end=2020-04-09&granularity=week`
+
+```json
+[
+  {"date": "2019-04-08", "service":"wms", "count":362},
+  {"date": "2019-04-08", "service":"wfs", "count":123},
+  {"date": "2019-04-08", "service":"ws", "count":12},
+  {"date": "2019-04-08", "service":"kml", "count":2},
+  {"date": "2019-04-15", "service":"wms", "count":364},
+  {"date": "2019-04-15", "service":"wfs", "count":125},
+  {"date": "2019-04-15", "service":"ws", "count":10},
+  {"date": "2019-04-15", "service":"kml", "count":4},
+  ...
+  {"date": "2020-03-30", "service":"wms", "count":462},
+  {"date": "2020-03-30", "service":"wfs", "count":223},
+  {"date": "2020-03-30", "service":"ws", "count":22},
+  {"date": "2020-03-30", "service":"kml", "count":50},
+  {"date": "2020-04-06", "service":"wms", "count":202},
+  {"date": "2020-04-06", "service":"wfs", "count":113},
+  {"date": "2020-04-06", "service":"ws", "count":22},
+  {"date": "2020-04-06", "service":"kml", "count":7},
+]
+```
+
+
+Les paramètres demandés (tous insensibles à la casse):
+
+ * UUID l'uuid du jeux de données
+ * start : format YYYY-MM-DD la date de début, si la granularité est la semaine ou le mois et que la date est "dans" la semaine/mois, je prends le début de la semaine/mois
+ * end : format YYYY-MM-DD la date de fin, si la granularité est la semaine ou le mois et que la date est "dans" la semaine/mois, je prends la fin de semaine/mois
+ * granularity : day, week, year.
+
+Pour la réponse :
+
+Tableau de dictionnaire : un dictionnaire par élément de granularité (jour, semaine, mois)
+Le dictionnaire contient:
+ * date: format YYYY-MM-DD la date de début de élément de granularité
+ * count: le nombre de fois que la ressource a été vue, indépendamment du service (WMS/WFS...)
