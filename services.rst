@@ -363,7 +363,7 @@ Service WMTS (Orthophotographies)
 
 Des services WMTS/WMS supplémentaires existent diffusant des flux d'orthophotographies.
 
-Ils sont accéssibles ici:
+Ils sont accessibles ici:
 * https://imagerie.data.grandlyon.com/all/wmts?service=WTMS&request=getcapabilities
 * https://imagerie.data.grandlyon.com/2154/wmts?service=WTMS&request=getcapabilities
 * https://imagerie.data.grandlyon.com/3857/wmts?service=WTMS&request=getcapabilities
