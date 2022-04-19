@@ -216,7 +216,7 @@ De lien en lien, vous pouvez alors naviguer vers la description des tables.
 
    }
 
-Liste des champs affichés :
+Liste des champs affichés :
 
 * **is_pk**: est-ce l’identifiant de la couche 
 
@@ -310,6 +310,19 @@ Cette URL retourne les enregistrements 10 à 15 de la couche déchetterie.
 
 Les services REST-JSON sont ainsi particulièrement adaptés à la constitution de listes de valeurs, de tableaux et de grilles paginés, d'interface de navigation au sein des données.
 
+Ensuite, à la mode Django, paramètres personnalisés sous la forme `champs__opérateur`, avec champ = nom du champ cible et opérateur à choisir parmi eq, gt, gte, lt, lte, in
+
+Exemple : https://download.recette.data.grandlyon.com/ws/grandlyon/abr_arbres_alignement.abrarbre/all.json?codeinsee__eq=69116&commune__in=LIMONEST,BRON&dateplantation__gte=2009-03-01&gid__in=6795,6798
+
+Les opérateurs:
+* `eq` : (equal) égalité
+* `gt` : (greater than) strictement plus grand que
+* `gte` : (greater than or equal) plus grand ou égal
+* `lt` : (lesser than) strictement plus petit que
+* `lte` : (lesser than or equal) plus petit ou égal
+* `in` : (in) dans la liste, les éléments de la liste sont séparés par des virgules.
+
+
 Services REST (en CSV)
 ----------------------
 
@@ -325,7 +338,7 @@ Le séparateur de colonne peut aussi être changé en utilisant l'option "separa
 Un paramètre supplémentaire "geometry=on" (off par défaut) ajoute une colonne "WKT" contenant la géométrie de l'objet au format [WKT](https://fr.wikipedia.org/wiki/Well-known_text)
 
 Export Shapefile
----------------
+----------------
 L'export shapefile est utilisable depuis les service JSON par l'utilisation d'une extension .shp au niveau de l'appel de couche (par exemple : https://download.data.grandlyon.com/ws/rdata/pvo_patrimoine_voirie.pvotrafic.shp). Cela renvoie alors à l'utilisateur un zip contenant un shapefile (SHP + SHX + DBF) de la couche. 
 
 En outre, plusieurs paramètres sont à la disposition de l'utilisateur :
