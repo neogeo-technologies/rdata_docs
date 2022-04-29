@@ -217,6 +217,7 @@ De lien en lien, vous pouvez alors naviguer vers la description des tables.
    }
 
 Liste des champs affichés :
+List of fields displayed:
 
 * **is_pk**: est-ce l’identifiant de la couche 
 
@@ -321,6 +322,18 @@ Les opérateurs:
 * `lt` : (lesser than) strictement plus petit que
 * `lte` : (lesser than or equal) plus petit ou égal
 * `in` : (in) dans la liste, les éléments de la liste sont séparés par des virgules.
+
+Then, in a Django style, custom parameters in the form `fields__operator`, with field = target field name and operator to choose from eq, gt, gte, lt, lte, in
+
+Example: https://download.recette.data.grandlyon.com/ws/grandlyon/abr_arbres_aligner.abrarbre/all.json?codeinsee__eq=69116&commune__in=LIMONEST,BRON&dateplantation__gte=2009-03-01&gid__in=6795,6798
+
+The operators:
+* `eq` : (equal) equality
+* `gt`: (greater than) strictly greater than
+* `gte`: (greater than or equal)
+* `lt`: (lesser than) strictly less than
+* `lte`: (lesser than or equal) less than or equal
+* `in`: (in) in the list, the elements of the list are separated by commas.
 
 
 Services REST (en CSV)
