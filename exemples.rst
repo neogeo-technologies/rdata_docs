@@ -331,6 +331,27 @@ Code source correspondant :
     </html>
     
     
+Utilisation du WCS
+-------------------
+Cet exemple montre l'utilisation du service WCS pour obtenir les données brutes sur le NO2 en 2012.
+Nous utiliserons dans ces exemples la version 2.0.1 qui est la plus récente. Il est encore possible d'utiliser aussi les versions 1.1.1 ou 1.0.0.
+**Etape 1** : lecture des capacités du service
+https://data.grandlyon.com/wcs/rdata?SERVICE=WCS&REQUEST=GetCapabilities&VERSION=2.0.1
+.. image:: _static/wcs_GetCapabilities.png
+Parmi les informations retournées, on peut consulter les formats de sortie disponibles. Le WCS est un service destiné à fournir de la donnée brute (raw data). Il est donc recommandé de l'utiliser avec un format comme **image/x-aaigrid** pour un raster monobande ou **image/tiff** pour un raster multibandes, plutôt qu'avec un des formats de sortie prévus pour la visualisation, comme **image/jpeg** ou **image/gif**.
+Dans la dernière partie du XML renvoyé, on trouve la liste des couvertures disponibles pour ce service, dont la couverture **grandlyon:STFONS_Step_02cm_2018**, que nous utiliserons dans la suite de l'exemple.
+	
+**Etape 2** : détail d'une couverture 
+https://data.grandlyon.com/geoserver/wcs?SERVICE=WCS&REQUEST=DescribeCoverage&VERSION=2.0.1&COVERAGEID=grandlyon:STFONS_Step_02cm_2018
+Attention, en version 2.0.1, le paramètre pour indiquer la couverture demandée est **COVERAGEID**, mais en version 1.0 c'est **IDENTIFIER** et en version 1.1, c'est **COVERAGE**. 
+Attention également à la casse dans le nom de la couverture demandée si vous testez manuellement les requêtes : le service WCS y est sensible. Ainsi la couverture *grandlyon:sTFONS_Step_02cm_2018* (avec un s minuscule ) ne sera pas trouvée.
+.. image:: _static/wcs_DescribeCoverage.png
+Cette requête permet d'obtenir tous les détails de la couverture comme son étendue géographique ou des informations sur les bandes. On voit ainsi dans notre cas qu'il s'agit d'images multi-canaux à 3 bandes.
+
+**Etape 3** : obtention de la couverture
+La requête suivante permet d'obtenir le raster au format TIFF :
+https://data.grandlyon.com/geoserver/wcs?SERVICE=WCS&VERSION=2.0.1&REQUEST=GetCoverage&FORMAT=image/tiff&COVERAGEID=grandlyon:STFONS_Step_02cm_2018
+
 
 Utilisation du service CSW
 --------------------------
