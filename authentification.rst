@@ -36,7 +36,7 @@ L'instruction cURL à utiliser pour accéder à la donnée "demo.demovelov" sur 
 
 ::
 
-    cURL -u demo:demo4dev curl https://download.data.grandlyon.com/ws/rdata/demo.demovelov/all.json?compact=false
+    cURL -u demo:demo4dev curl https://data.grandlyon.com/fr/datapusher/ws/rdata/tcl_sytral.tcllignebus_2_0_0/all.json?compact=false
 
 sauf erreur, vous devriez alors recevoir un flux json. 
 
@@ -44,7 +44,7 @@ L'instruction WGET à utiliser est comparable :
 
 :: 
 
-    wget --http-user=demo --http-password=demo4dev https://download.data.grandlyon.com/ws/rdata/demo.demovelov/all.json?compact=false
+    wget --http-user=demo --http-password=demo4dev https://data.grandlyon.com/fr/datapusher/ws/rdata/tcl_sytral.tcllignebus_2_0_0/all.json?compact=false
  
 
 Exemples avec PHP ou Python
@@ -61,7 +61,7 @@ Pour Python et urllib2 nous aurons :
     # set basic information
     username = 'demo'
     password = 'demo4dev'
-    url = 'https://download.data.grandlyon.com/ws/rdata/demo.demovelov/all.json'
+    url = 'https://data.grandlyon.com/fr/datapusher/ws/rdata/tcl_sytral.tcllignebus_2_0_0/all.json?compact=false'
     
     # prepare the request Object
     request = urllib2.Request(url)
@@ -86,7 +86,7 @@ En PHP, nous utiliserons la librairie cURL intégrée :
     // set basic information
     $username='demo';
     $password='demo4dev';
-    $URL='https://download.data.grandlyon.com/ws/rdata/demo.demovelov/all.json';
+    $URL='https://data.grandlyon.com/fr/datapusher/ws/rdata/tcl_sytral.tcllignebus_2_0_0/all.json?compact=false';
     
     // instantiate a new cUrl object
     $ch = curl_init();
