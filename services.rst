@@ -304,7 +304,7 @@ https://data.grandlyon.com/fr/datapusher/ws/grandlyon/abr_arbres_alignement.abra
 all.json contient aussi des informations supplémentaires liées à la pagination, à savoir des liens vers les pages précédentes et suivantes sous la forme d'une URL reprenant la valeur de maxfeatures utilisée  pour la page en cours et modifiant la valeur du paramètre "start" en fonction de la page en cours. 
 
 *Exemple* : 
-https://data.grandlyon.com/fr/datapusher/ws/grandlyon/gip_proprete.gipdecheterie/all.json?maxfeatures=5&start=10
+https://data.grandlyon.com/fr/datapusher/ws/grandlyon/gip_proprete.gipdecheterie_3_0_0/all.csv?maxfeatures=5&start=10
 
 Cette URL retourne les enregistrements 10 à 15 de la couche déchetterie.
 
@@ -374,7 +374,7 @@ Ces tuiles peuvent être utilisées par les principaux frameworks SIG web (Mapli
 Services KML
 ------------
 Le GrandLyon publie ses données au format KML. Les données sont accessibles via le service WFS et le format *kml* à l'url suivante : 
-https://data.grandlyon.com/geoserver/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=[schema].[name]&outputFormat=kml&SRSNAME=EPSG:4171&sortBy=gid
+https://data.grandlyon.com/geoserver/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=[organisation:][schema].[name]&outputFormat=kml&SRSNAME=EPSG:4171&sortBy=gid
 
 *Exemple* : https://data.grandlyon.com/geoserver/ows?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=sytral:tcl_sytral.tcllignebus_2_0_0&outputFormat=kml&SRSNAME=EPSG:4171&sortBy=gid
 
